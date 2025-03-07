@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Hearthstone Cards</string>
+    <string name="app_name">Hearthstone Cards Collection</string>
+    <string name="answer_button_text">Check answer</string>
 </resources>

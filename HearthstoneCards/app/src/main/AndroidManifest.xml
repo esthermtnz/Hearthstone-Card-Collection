@@ -7,8 +7,8 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:label="@string/app_name"
-        android:icon="@mipmap/hearthstone_launcher"
-        android:roundIcon="@mipmap/hearthstone_launcher_round"
+        android:icon="@mipmap/new_launcher"
+        android:roundIcon="@mipmap/new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HearthstoneCards"
         tools:targetApi="31">
@@ -19,7 +19,6 @@
             android:theme="@style/Theme.HearthstoneCards">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

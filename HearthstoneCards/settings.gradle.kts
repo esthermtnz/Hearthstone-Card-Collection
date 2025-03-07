@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Hearthstone Cards"
+rootProject.name = "HearthstoneCards"
 include(":app")
