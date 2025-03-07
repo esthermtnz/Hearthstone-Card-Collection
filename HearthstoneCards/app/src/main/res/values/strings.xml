@@ -1,4 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Hearthstone Cards Collection</string>
-    <string name="answer_button_text">Check answer</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="register_text">Create Account</string>
+    <string name="logo_description">Logo</string>
+
+    <string name="first_name_hint">Name</string>
+    <string name="last_name_hint">Surname</string>
+    <string name="email_hint">Email</string>
+    <string name="telephone_number_hint">Telephone Number</string>
+
 </resources>
+
