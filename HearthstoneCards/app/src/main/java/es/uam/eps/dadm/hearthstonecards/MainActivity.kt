@@ -3,6 +3,7 @@ package es.uam.eps.dadm.hearthstonecards
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         val name = resources.getString(R.string.app_name)
 
         Toast.makeText(this, name, Toast.LENGTH_LONG).show()
+        Timber.i("onCreate called")
     }
 }
 
