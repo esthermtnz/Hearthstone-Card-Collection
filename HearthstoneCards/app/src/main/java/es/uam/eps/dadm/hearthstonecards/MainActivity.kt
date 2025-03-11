@@ -7,12 +7,11 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.activity_main)
 
         val name = resources.getString(R.string.app_name)
 
         Toast.makeText(this, name, Toast.LENGTH_LONG).show()
     }
 }
+

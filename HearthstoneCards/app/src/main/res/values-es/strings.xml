@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Collección Cartas Hearthstone</string>
+    <string name="reduced_app_name">Cartas Hearthstone</string>
     <string name="username_hint">Usuario</string>
     <string name="password_hint">Contraseña</string>
     <string name="login_button">Iniciar Sesión</string>

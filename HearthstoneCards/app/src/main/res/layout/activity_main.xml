@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top"
+    android:background="@color/white">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:paddingTop="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="16dp">
+
+            <!-- Pack Icon -->
+            <ImageView
+                android:id="@+id/pack_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/sobre"
+                android:background="?attr/selectableItemBackground"
+                android:layout_gravity="start"
+                android:layout_marginEnd="16dp"/>
+
+            <!-- Counter -->
+            <TextView
+                android:id="@+id/pack_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="0dp"/>
+
+            <!-- App name -->
+            <TextView
+                android:id="@+id/reduced_app_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/reduced_app_name"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:gravity="center"/>
+
+            <!-- Profile Button -->
+            <ImageButton
+                android:id="@+id/profile_button"
+                android:layout_width="40dp"
+                android:layout_height="48dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_profile"
+                android:background="?attr/selectableItemBackground"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Pack Carrusel -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/image_carousel"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"/>
+
+</LinearLayout>
