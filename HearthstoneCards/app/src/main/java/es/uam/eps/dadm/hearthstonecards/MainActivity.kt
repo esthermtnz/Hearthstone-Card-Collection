@@ -1,54 +1,28 @@
 package es.uam.eps.dadm.hearthstonecards
-import es.uam.eps.dadm.hearthstonecards.databinding.ActivityLoginBinding
+import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.viewpager2.widget.ViewPager2
+import es.uam.eps.dadm.hearthstonecards.databinding.ActivityMainBinding
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityLoginBinding
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val name = resources.getString(R.string.app_name)
+        val viewPager = findViewById<ViewPager2>(R.id.image_carousel)
 
-        binding.btnLogin.setOnClickListener {
+        // Lista de imágenes (solo 'sobre.png' por ahora)
+        val images = listOf(R.drawable.monster_pack, R.drawable.character_pack)
 
-            val username = binding.username.text.toString()
-            val password = binding.password.text.toString()
-
-            //Print username and password
-            Toast.makeText(this, "Username: $username, Password: $password", Toast.LENGTH_LONG).show()
-        }
-
-        //If 'X' pressed, delete form content from the username field
-        binding.username.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_clear, 0)
-        binding.username.setOnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                val drawableRight = binding.username.compoundDrawables[2]
-                if (drawableRight != null && event.x >= binding.username.width - binding.username.paddingRight - drawableRight.bounds.width()) {
-                    binding.username.setText("")
-                    return@setOnTouchListener true
-                }
-            }
-            false
-        }
-        //If 'X' pressed, delete form content from the password field
-        binding.password.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_clear, 0)
-        binding.password.setOnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                val drawableRight = binding.password.compoundDrawables[2]
-                if (drawableRight != null && event.x >= binding.password.width - binding.password.paddingRight - drawableRight.bounds.width()) {
-                    binding.password.setText("")
-                    return@setOnTouchListener true
-                }
-            }
-            false
-        }
+        // Asignar adaptador al ViewPager2
+        viewPager.adapter = ImageAdapter(images)
 
         Timber.i("onCreate called")
     }

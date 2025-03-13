@@ -33,7 +33,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/sobre"
+                    android:src="@drawable/pack"
                     android:background="?attr/selectableItemBackground"
                     android:layout_gravity="start"
                     android:layout_marginEnd="16dp"/>
@@ -73,11 +73,15 @@
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
         <!-- Pack Carrusel -->
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/image_carousel"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="400dp"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"/>
 
