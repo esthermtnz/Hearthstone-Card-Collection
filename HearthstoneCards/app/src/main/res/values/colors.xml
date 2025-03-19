@@ -11,4 +11,8 @@
     <color name="purple">#6A0DAD</color>
     <color name="blue_green">#85a0a4</color>
 
+    <color name="light_blueish">#85a0a4</color>
+    <color name="dark_blueish">#58787d</color>
+    <color name="brown">#5f4a38</color>
+
 </resources>
