@@ -1,10 +1,11 @@
-package es.uam.eps.dadm.hearthstonecards
+package es.uam.eps.dadm.hearthstonecards.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import es.uam.eps.dadm.hearthstonecards.R
 
 class ImageAdapter(private val images: List<Int>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 

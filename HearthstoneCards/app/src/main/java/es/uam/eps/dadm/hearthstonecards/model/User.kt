@@ -1,4 +1,4 @@
-package es.uam.eps.dadm.hearthstonecards
+package es.uam.eps.dadm.hearthstonecards.model
 
 data class User(
     val id: Int,

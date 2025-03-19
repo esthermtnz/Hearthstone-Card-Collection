@@ -1,4 +1,4 @@
-package es.uam.eps.dadm.hearthstonecards
+package es.uam.eps.dadm.hearthstonecards.view
 
 import android.app.Application
 import timber.log.Timber

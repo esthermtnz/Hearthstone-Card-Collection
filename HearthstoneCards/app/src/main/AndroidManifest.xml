@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".HearthstoneApplication"
+        android:name=".view.HearthstoneApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +14,7 @@
         android:theme="@style/Theme.HearthstoneCards"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".view.LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.HearthstoneCards">
@@ -24,8 +24,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".view.RegisterActivity" />
+        <activity android:name=".view.MainActivity" />
 
     </application>
 

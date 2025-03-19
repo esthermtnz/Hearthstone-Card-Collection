@@ -1,4 +1,4 @@
-package es.uam.eps.dadm.hearthstonecards
+package es.uam.eps.dadm.hearthstonecards.view
 import android.content.Intent
 import es.uam.eps.dadm.hearthstonecards.databinding.ActivityLoginBinding
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import es.uam.eps.dadm.hearthstonecards.R
 import timber.log.Timber
 
 class LoginActivity : AppCompatActivity() {

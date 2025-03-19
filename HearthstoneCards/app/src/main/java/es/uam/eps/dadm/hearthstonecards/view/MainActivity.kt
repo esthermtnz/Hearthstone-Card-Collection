@@ -1,11 +1,9 @@
-package es.uam.eps.dadm.hearthstonecards
-import android.content.Intent
+package es.uam.eps.dadm.hearthstonecards.view
 import android.os.Bundle
-import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
+import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.databinding.ActivityMainBinding
 import timber.log.Timber
 
