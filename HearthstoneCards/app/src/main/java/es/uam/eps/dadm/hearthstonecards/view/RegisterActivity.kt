@@ -23,6 +23,15 @@ class RegisterActivity : AppCompatActivity()  {
 
         }
 
+        //Register button
+        binding.btnRegister.setOnClickListener {
+            //Move to Main
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
+            Timber.i("Register done. Move to main page")
+        }
+
 
         Timber.i("onCreate called")
     }

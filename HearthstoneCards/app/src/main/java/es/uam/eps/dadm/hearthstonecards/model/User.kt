@@ -6,7 +6,7 @@ data class User(
     var surname: String,
     var email: String,
     var tlf: String,
-    private var password: String,
+    var password: String,
     var username: String,
     var openToken: String
 ) {

@@ -35,7 +35,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/pack"
+                    android:src="@drawable/packs_icon"
                     android:background="?attr/selectableItemBackground"
                     android:layout_gravity="start"
                     android:layout_marginEnd="16dp"/>

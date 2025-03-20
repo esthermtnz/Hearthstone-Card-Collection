@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_profile"
+        android:title="Ver perfil"/>
+    <item
+        android:id="@+id/action_collection"
+        android:title="Colección"/>
+    <item
+        android:id="@+id/action_friends"
+        android:title="Amigos"/>
+</menu>

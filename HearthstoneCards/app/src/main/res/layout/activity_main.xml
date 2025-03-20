@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel" />
+    </data>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,7 +42,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/pack"
+                    android:src="@drawable/packs_icon"
                     android:background="?attr/selectableItemBackground"
                     android:layout_gravity="start"
                     android:layout_marginEnd="16dp"/>
@@ -63,7 +71,7 @@
 
                 <!-- Profile Button -->
                 <ImageButton
-                    android:id="@+id/profile_button"
+                    android:id="@+id/btn_profile"
                     android:layout_width="40dp"
                     android:layout_height="48dp"
                     android:scaleType="centerInside"
@@ -85,6 +93,5 @@
             android:layout_height="400dp"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"/>
-
     </LinearLayout>
 </layout>
