@@ -20,6 +20,20 @@ data class User(
     fun openPack(packId: Int) {
         val packToRemove = packs.find { it.id == packId }
         if (packToRemove != null) {
+            packToRemove.openPack()
+
+            //Add card to obtained and update number of repetitions
+            for (carta in packToRemove.cards) {
+                val cantidadActual = packToRemove.collection.obtained[carta] ?: 0
+                packToRemove.collection.obtained[carta] = cantidadActual + 1
+            }
+
+            println("Cartas obtenidas al abrir el sobre:")
+            for (carta in packToRemove.cards) {
+                println("- ${carta.id} (rareza: ${carta.rarity})")
+            }
+
+            //Delete pack
             packs.remove(packToRemove)
         } else {
             println("Pack con id $packId no encontrado.")

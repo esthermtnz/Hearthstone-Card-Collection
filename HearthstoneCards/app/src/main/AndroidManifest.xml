@@ -28,7 +28,6 @@
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.ProfileActivity" />
 
-
     </application>
 
 </manifest>
