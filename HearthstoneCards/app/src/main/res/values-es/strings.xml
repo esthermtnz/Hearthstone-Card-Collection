@@ -12,4 +12,13 @@
     <string name="last_name_hint">Apellidos</string>
     <string name="email_hint">Correo electrónico</string>
     <string name="telephone_number_hint">Número de teléfono</string>
+
+    <string name="action_profile">Ver perfil</string>
+    <string name="action_collection">Colección</string>
+    <string name="action_friends">Amigos</string>
+    <string name="warrior_pack">Sobre Guerrero</string>
+    <string name="priest_pack">Sobre Sacerdote</string>
+    <string name="warrior_collection">Colección Guerrero</string>
+    <string name="priest_collection">Colección Sacerdote</string>
+
 </resources>

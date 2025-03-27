@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         val viewPager = binding.imageCarousel
 
-        val images = viewModel.packs.map { it.picture }
+        val images = viewModel.user.packs.map { it.picture }
 
 
         viewPager.adapter = ImageAdapter(images)

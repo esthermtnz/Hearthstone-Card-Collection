@@ -27,29 +27,26 @@
             android:background="?attr/selectableItemBackground"
             android:scaleType="centerInside"
             android:src="@drawable/back_arrow"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="5dp"/>
 
         <!-- Profile Button -->
         <ImageView
             android:id="@+id/btn_profile"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_profile"
             android:layout_gravity="center"
             android:background="?attr/selectableItemBackground"
             />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
 
         <TextView
             android:id="@+id/profile_user_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:text="@string/first_name_hint"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
@@ -60,10 +57,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:text="@{viewModel.user.name + ' ' + viewModel.user.surname}"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"/>
 
         <View
@@ -80,10 +77,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:text="@string/email_hint"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_gravity="center"/>
 
         <TextView
@@ -91,10 +88,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:text="@{viewModel.user.email}"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"/>
         <View
             android:id="@+id/separator2_view"
@@ -110,10 +107,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:text="@string/telephone_number_hint"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_gravity="center"/>
 
         <TextView
@@ -121,9 +118,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:text="@{viewModel.user.tlf}"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:gravity="center"/>
 
     </LinearLayout>
