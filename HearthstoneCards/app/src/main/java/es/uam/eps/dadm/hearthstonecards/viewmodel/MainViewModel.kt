@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.model.Card
 import es.uam.eps.dadm.hearthstonecards.model.Pack
+import es.uam.eps.dadm.hearthstonecards.model.User
 import timber.log.Timber
 
 class MainViewModel : ViewModel() {
@@ -30,6 +31,16 @@ class MainViewModel : ViewModel() {
         cards = listOf())
 
     var packs = listOf(warrior_pack, priest_pack)
+
+    var user = User(1,
+        "Juan",
+        "García",
+        "juangarcia@gmail.com",
+        "956700478",
+        "password",
+        "juanillo01",
+        "123456"
+        )
 
     init {
         Timber.i("MainViewModel created")

@@ -1,4 +1,5 @@
 package es.uam.eps.dadm.hearthstonecards.view
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -47,7 +48,8 @@ class MainActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.action_profile -> {
-                    // Acción para "Ver perfil"
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.action_collection -> {
