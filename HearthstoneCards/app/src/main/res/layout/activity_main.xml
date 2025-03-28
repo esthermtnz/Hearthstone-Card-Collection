@@ -5,6 +5,10 @@
 
     <data>
         <import type="android.view.View"/>
+        <import type="androidx.lifecycle.LiveData" />
+        <import type="androidx.lifecycle.Transformations" />
+        <import type="java.util.List" />
+        <import type="es.uam.eps.dadm.hearthstonecards.model.Pack" />
         <variable
             name="viewModel"
             type="es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel" />
@@ -52,7 +56,7 @@
                     android:id="@+id/pack_counter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(viewModel.user.packs.size())}"
+                    android:text='@{viewModel.packs != null ? String.valueOf(viewModel.packs.size()) : "0"}'
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:layout_gravity="center_vertical"

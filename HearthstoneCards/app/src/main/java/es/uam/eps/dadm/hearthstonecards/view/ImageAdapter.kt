@@ -9,10 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.model.Pack
 import es.uam.eps.dadm.hearthstonecards.model.User
+import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 
 class ImageAdapter(
-    private val packs: List<Pack>,
-    private val user: User
+    private var packs: List<Pack>,
+    private val viewModel: MainViewModel
 ) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,11 +34,12 @@ class ImageAdapter(
         holder.imageView.setOnClickListener {
             val currentTime = System.currentTimeMillis()
             if (currentTime - holder.lastClickTime < 300) {
-                // Doble clic detectado
-                user.openPack(pack.id)
+                viewModel.openUserPack(pack.id)
+                val counter = viewModel.packs.value?.size ?: 0
+
                 Toast.makeText(
                     holder.imageView.context,
-                    "¡Sobre abierto!",
+                    "¡Sobre abierto! Sobres: $counter",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -46,4 +48,9 @@ class ImageAdapter(
     }
 
     override fun getItemCount(): Int = packs.size
+
+    fun updatePacks(newPacks: List<Pack>) {
+        this.packs = newPacks
+        notifyDataSetChanged()
+    }
 }

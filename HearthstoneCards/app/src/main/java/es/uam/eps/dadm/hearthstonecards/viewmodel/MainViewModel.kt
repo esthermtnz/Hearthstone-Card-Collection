@@ -1,5 +1,7 @@
 package es.uam.eps.dadm.hearthstonecards.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.model.Card
@@ -104,6 +106,14 @@ class MainViewModel : ViewModel() {
             ),
         )
     )
+
+    private val _packs = MutableLiveData<List<Pack>>(user.packs)
+    val packs: LiveData<List<Pack>> get() = _packs
+
+    fun openUserPack(packId: Int) {
+        user.openPack(packId)
+        _packs.value = user.packs
+    }
 
     init {
         Timber.i("MainViewModel created")

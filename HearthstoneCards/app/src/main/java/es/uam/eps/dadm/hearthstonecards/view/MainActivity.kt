@@ -24,12 +24,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         val viewPager = binding.imageCarousel
 
         val images = viewModel.user.packs.map { it.picture }
 
-        binding.imageCarousel.adapter = ImageAdapter(viewModel.user.packs, viewModel.user)
+        val adapter = ImageAdapter(viewModel.packs.value ?: listOf(), viewModel)
+        binding.imageCarousel.adapter = adapter
+
+        viewModel.packs.observe(this) { updatedPacks ->
+            adapter.updatePacks(updatedPacks)
+        }
 
        //Profile button popup
         binding.btnProfile?.setOnClickListener { view ->
