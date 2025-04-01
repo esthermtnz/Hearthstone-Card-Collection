@@ -1,3 +1,6 @@
+/**
+ * Class created to make the register view functional
+ */
 package es.uam.eps.dadm.hearthstonecards.view
 
 import android.content.Intent
@@ -8,6 +11,9 @@ import androidx.databinding.DataBindingUtil
 import es.uam.eps.dadm.hearthstonecards.R
 import timber.log.Timber
 
+/**
+ * Definition of the RegisterActivity class
+ */
 class RegisterActivity : AppCompatActivity()  {
     lateinit var binding: ActivityRegisterBinding
 

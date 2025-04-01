@@ -1,3 +1,6 @@
+/**
+ * Class that allows the user to check their profile
+ */
 package es.uam.eps.dadm.hearthstonecards.view
 import android.content.Intent
 import es.uam.eps.dadm.hearthstonecards.databinding.ActivityProfileBinding
@@ -11,6 +14,9 @@ import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 import timber.log.Timber
 
+/**
+ * Definition of the ProfileActivity class
+ */
 class ProfileActivity : AppCompatActivity() {
     lateinit var binding: ActivityProfileBinding
 

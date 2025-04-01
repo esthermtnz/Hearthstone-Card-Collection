@@ -1,3 +1,6 @@
+/**
+ * Class that holds the functioning of the main view
+ */
 package es.uam.eps.dadm.hearthstonecards.viewmodel
 
 import androidx.lifecycle.LiveData
@@ -10,6 +13,9 @@ import es.uam.eps.dadm.hearthstonecards.model.Pack
 import es.uam.eps.dadm.hearthstonecards.model.User
 import timber.log.Timber
 
+/**
+ * Definition of the class
+ */
 class MainViewModel : ViewModel() {
 
     var user = User(1,

@@ -1,3 +1,6 @@
+/**
+ * Class created to make the login page functional
+ */
 package es.uam.eps.dadm.hearthstonecards.view
 import android.content.Intent
 import es.uam.eps.dadm.hearthstonecards.databinding.ActivityLoginBinding
@@ -9,6 +12,9 @@ import androidx.databinding.DataBindingUtil
 import es.uam.eps.dadm.hearthstonecards.R
 import timber.log.Timber
 
+/**
+ * Definition of the LoginActivity class
+ */
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
 
