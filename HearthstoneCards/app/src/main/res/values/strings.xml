@@ -21,6 +21,8 @@
     <string name="warrior_collection">Warrior Collection</string>
     <string name="priest_collection">Priest Collection</string>
 
+    <string name="load_collection_msg">Collection loaded</string>
+
 
 </resources>
 

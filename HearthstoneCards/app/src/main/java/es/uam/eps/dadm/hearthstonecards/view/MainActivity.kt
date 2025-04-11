@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        val viewPager = binding.imageCarousel
-
-        val images = viewModel.user.packs.map { it.picture }
 
         val adapter = ImageAdapter(viewModel.packs.value ?: listOf(), viewModel)
         binding.imageCarousel.adapter = adapter
@@ -59,7 +56,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_collection -> {
-                    // Acción para "Colección"
+                    val intent = Intent(this, CollectionsActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.action_friends -> {
