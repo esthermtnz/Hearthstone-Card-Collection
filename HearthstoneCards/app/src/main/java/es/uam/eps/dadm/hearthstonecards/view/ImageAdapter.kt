@@ -1,3 +1,6 @@
+/**
+ * Class made to handle the images that need to be shown in the app
+ */
 package es.uam.eps.dadm.hearthstonecards.view
 
 import android.view.LayoutInflater
@@ -11,6 +14,12 @@ import es.uam.eps.dadm.hearthstonecards.model.Pack
 import es.uam.eps.dadm.hearthstonecards.model.User
 import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 
+/**
+ * Definition of the ImageAdapter class
+ *
+ * @param packs List of packs that will be assigned an image
+ * @param viewModel View model where the packs are going to be shown
+ */
 class ImageAdapter(
     private var packs: List<Pack>,
     private val viewModel: MainViewModel

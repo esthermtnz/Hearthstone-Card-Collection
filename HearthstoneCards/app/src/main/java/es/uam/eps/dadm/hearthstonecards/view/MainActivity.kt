@@ -1,3 +1,6 @@
+/**
+ * Class that holds the functioning of the main activity view
+ */
 package es.uam.eps.dadm.hearthstonecards.view
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +17,9 @@ import es.uam.eps.dadm.hearthstonecards.databinding.ActivityMainBinding
 import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 import timber.log.Timber
 
+/**
+ * Definition of the MainActivity class
+ */
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by lazy {
@@ -43,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         Timber.i("onCreate called")
     }
 
+    /**
+     * Shows the popup menu on the main view and allows to interact with it
+     */
     private fun showPopupMenu(view: View) {
         val popupMenu = PopupMenu(this, view)
         val inflater: MenuInflater = popupMenu.menuInflater
@@ -71,6 +80,9 @@ class MainActivity : AppCompatActivity() {
         popupMenu.show()
     }
 
+    /**
+     * Function that handles when the user returns to this activity
+     */
     override fun onResume() {
         super.onResume()
         val numPacks = viewModel.user.packs.size

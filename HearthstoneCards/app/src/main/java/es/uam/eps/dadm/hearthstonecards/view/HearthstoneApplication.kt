@@ -1,3 +1,6 @@
+/**
+ * Class that inherits from Application() and uses Timber on it
+ */
 package es.uam.eps.dadm.hearthstonecards.view
 
 import android.app.Application
