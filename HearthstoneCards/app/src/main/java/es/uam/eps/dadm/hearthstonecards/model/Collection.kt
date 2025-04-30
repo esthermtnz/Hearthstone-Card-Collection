@@ -3,7 +3,8 @@
  */
 
 package es.uam.eps.dadm.hearthstonecards.model
-
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 /**
  * Definition of the data class collection
  *
@@ -12,7 +13,9 @@ package es.uam.eps.dadm.hearthstonecards.model
  * @param cards All cards included in the collection
  * @param obtained Cards that a determined user has collected from a specific collection
  */
+@Entity(tableName="collection_table")
 data class Collection(
+    @PrimaryKey
     val id: Int,
     var name: String,
     val cards: List<Card>,

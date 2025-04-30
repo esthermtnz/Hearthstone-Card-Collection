@@ -2,7 +2,8 @@
  * Data class created to model a user in the app
  */
 package es.uam.eps.dadm.hearthstonecards.model
-
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 /**
  * Definition for the data class User
  *
@@ -17,7 +18,9 @@ package es.uam.eps.dadm.hearthstonecards.model
  * @param packs Packs available for the user to open
  * @param collections Collections the user have from the different collections available
  */
+@Entity(tableName="user_table")
 data class User(
+    @PrimaryKey
     val id: Int,
     var name: String,
     var surname: String,
