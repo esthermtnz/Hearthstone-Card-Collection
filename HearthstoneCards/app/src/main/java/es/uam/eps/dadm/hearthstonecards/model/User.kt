@@ -15,8 +15,8 @@ import androidx.room.PrimaryKey
  * @param password Password of the user
  * @param username Username of the user
  * @param openToken Tokens for opening a pack
- * @param packs Packs available for the user to open
- * @param collections Collections the user have from the different collections available
+ * //@param packs Packs available for the user to open
+ * //@param collections Collections the user have from the different collections available
  */
 @Entity(tableName="user_table")
 data class User(
@@ -29,8 +29,8 @@ data class User(
     var password: String,
     var username: String,
     var openToken: String,
-    var packs: MutableList<Pack>,
-    var collections: MutableList<Collection>
+    //var packs: MutableList<Pack>,
+    //var collections: MutableList<Collection>
 ) {
     /**
      * Changes the password for an username
@@ -47,6 +47,7 @@ data class User(
      *
      * @param packId ID of the pack that is going to be open
      */
+    /*
     fun openPack(packId: Int) {
         val packToRemove = packs.find { it.id == packId }
         if (packToRemove != null) {
@@ -68,6 +69,6 @@ data class User(
         } else {
             println("Pack con id $packId no encontrado.")
         }
-    }
+    }*/
 
 }

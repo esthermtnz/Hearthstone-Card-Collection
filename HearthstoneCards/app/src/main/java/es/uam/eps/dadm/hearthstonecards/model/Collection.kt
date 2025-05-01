@@ -10,16 +10,16 @@ import androidx.room.PrimaryKey
  *
  * @param id ID of the collection
  * @param name Name of the collection
- * @param cards All cards included in the collection
- * @param obtained Cards that a determined user has collected from a specific collection
+ * //@param cards All cards included in the collection
+ * //@param obtained Cards that a determined user has collected from a specific collection
  */
 @Entity(tableName="collection_table")
 data class Collection(
     @PrimaryKey
     val id: Int,
     var name: String,
-    val cards: List<Card>,
-    var obtained: MutableMap<Card, Int>
+    //val cards: List<Card>,
+    //var obtained: MutableMap<Card, Int>
 )
 
 {
@@ -28,6 +28,7 @@ data class Collection(
      *
      * @return selectedCards the 5 random cards picked by the algorithm
      */
+    /*
     fun shuffleCards(): List<Card> {
         val selectedCards = mutableListOf<Card>()
         val random = java.util.Random()
@@ -58,5 +59,5 @@ data class Collection(
         }
 
         return selectedCards
-    }
+    }*/
 }
