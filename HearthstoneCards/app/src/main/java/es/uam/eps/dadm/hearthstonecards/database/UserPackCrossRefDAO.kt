@@ -10,8 +10,8 @@ interface UserPackCrossRefDAO {
     @Query("SELECT * FROM user_pack_table")
     fun getUserPackCrossRefs(): LiveData<List<UserPackCrossRef>>
 
-    @Query("SELECT * FROM user_pack_table WHERE userId = :idUser")
-    fun getPacksFromUserId(idUser: Int): LiveData<List<UserPackCrossRef>>
+    @Query("SELECT * FROM user_pack_table WHERE username = :username")
+    fun getPacksFromUsername(username: String): LiveData<List<UserPackCrossRef>>
 
     @Query("SELECT * FROM user_pack_table WHERE packId = :idPack")
     fun getUsersFromPackId(idPack: Int): LiveData<List<UserPackCrossRef>>

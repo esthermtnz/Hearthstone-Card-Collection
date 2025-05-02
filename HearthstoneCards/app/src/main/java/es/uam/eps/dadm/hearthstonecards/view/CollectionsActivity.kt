@@ -20,7 +20,7 @@ class CollectionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_collections)
         val viewModel = MainViewModel()
-        val colecciones = viewModel.user.collections
+        //val colecciones = viewModel.user.collections
 
         //Back button
         binding.btnBack.setOnClickListener {
@@ -30,12 +30,12 @@ class CollectionsActivity : AppCompatActivity() {
 
         }
 
-        val adapter = CollectionPagerAdapter(this, colecciones)
-        binding.viewPager.adapter = adapter
+        //val adapter = CollectionPagerAdapter(this, colecciones)
+        //binding.viewPager.adapter = adapter
 
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+        /*TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = colecciones[position].name
-        }.attach()
+        }.attach()*/
 
     }
 }

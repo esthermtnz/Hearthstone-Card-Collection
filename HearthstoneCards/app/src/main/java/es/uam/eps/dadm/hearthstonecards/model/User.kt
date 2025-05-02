@@ -7,28 +7,28 @@ import androidx.room.PrimaryKey
 /**
  * Definition for the data class User
  *
- * @param id ID of the user
+ * //@param id ID of the user
  * @param name Name of the user
  * @param surname Surname of the user
  * @param email Email of the user
  * @param tlf Phone number of the user
  * @param password Password of the user
  * @param username Username of the user
- * @param openToken Tokens for opening a pack
+ * @param openTokens Tokens for opening a pack
  * //@param packs Packs available for the user to open
  * //@param collections Collections the user have from the different collections available
  */
 @Entity(tableName="user_table")
 data class User(
-    @PrimaryKey
-    val id: Int,
+
     var name: String,
     var surname: String,
     var email: String,
     var tlf: String,
     var password: String,
+    @PrimaryKey
     var username: String,
-    var openToken: String,
+    var openTokens: Int,
     //var packs: MutableList<Pack>,
     //var collections: MutableList<Collection>
 ) {

@@ -17,7 +17,7 @@ import timber.log.Timber
  * Definition of the class
  */
 class MainViewModel : ViewModel() {
-
+/*
     var user = User(1,
         "Juan",
         "García",
@@ -111,7 +111,7 @@ class MainViewModel : ViewModel() {
                 obtained =  mutableMapOf()
             ),
         )
-    )
+    )*/
 
     private val _packs = MutableLiveData<List<Pack>>(user.packs)
     val packs: LiveData<List<Pack>> get() = _packs

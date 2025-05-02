@@ -11,6 +11,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import es.uam.eps.dadm.hearthstonecards.R
 import timber.log.Timber
+import es.uam.eps.dadm.hearthstonecards.database.AppDatabase
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 /**
  * Definition of the LoginActivity class
@@ -21,6 +24,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+        val database = AppDatabase.getInstance(applicationContext)
+        val userDao = database.userDao
 
         //Create Account Button
         binding.txtRegister.setOnClickListener {
@@ -37,14 +43,25 @@ class LoginActivity : AppCompatActivity() {
             val username = binding.username.text.toString()
             val password = binding.password.text.toString()
 
-            //Print username and password
-            Toast.makeText(this, "Username: $username, Password: $password", Toast.LENGTH_LONG).show()
+            lifecycleScope.launch {
+                val user = userDao.getUser(username)
 
-            //Move to Main
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+                if(user != null && user.password == password){
+                    //Save username for other activities that would make use of it
+                    val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                    sharedPreferences.edit().putString("username", user.username).apply()
+                    Timber.i("Login correcto, $username $password")
+                    Toast.makeText(this@LoginActivity, "Bienvenido, $username", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                else{
+                    Timber.i("Login incorrecto.")
+                    Toast.makeText(this@LoginActivity, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-            Timber.i("Login done. Move to main page")
+
         }
 
         //If 'X' pressed, delete form content from the username field

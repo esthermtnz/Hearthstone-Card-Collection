@@ -2,8 +2,8 @@ package es.uam.eps.dadm.hearthstonecards.model
 
 import androidx.room.Entity
 
-@Entity(primaryKeys = ["userId", "packId"], tableName = "user_pack_table")
+@Entity(primaryKeys = ["username", "packId"], tableName = "user_pack_table")
 data class UserPackCrossRef(
-    val userId: Int,
+    val username: String,
     val packId: Int
 )

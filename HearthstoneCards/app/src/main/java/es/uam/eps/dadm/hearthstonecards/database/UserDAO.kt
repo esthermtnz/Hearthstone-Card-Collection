@@ -2,6 +2,7 @@ package es.uam.eps.dadm.hearthstonecards.database
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import es.uam.eps.dadm.hearthstonecards.model.Card
 import es.uam.eps.dadm.hearthstonecards.model.Collection
@@ -11,12 +12,12 @@ import es.uam.eps.dadm.hearthstonecards.model.User
 @Dao
 interface UserDAO {
     @Query("SELECT * FROM user_table")
-    fun getUsers(): LiveData<List<User>>
+    fun getUsers(): List<User>
 
-    @Query("SELECT * FROM user_table WHERE id= :idUser")
-    fun getUser(idUser: Int): LiveData<User?>
+    @Query("SELECT * FROM user_table WHERE username= :username")
+    fun getUser(username: String): User?
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun addUser(user: User)
 
     @Query("DELETE FROM user_table")
