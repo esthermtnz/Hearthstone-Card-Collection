@@ -40,17 +40,23 @@ class MainActivity : AppCompatActivity() {
         val sharedPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
         val username = sharedPrefs.getString("username", null)
         viewModel.setUsername(username)
-        viewModel.setUser(database.userDao.getUser(username!!))
-
-
-
-
-        val adapter = ImageAdapter(viewModel.packs.value ?: listOf(), viewModel)
-        binding.imageCarousel.adapter = adapter
-
-        viewModel.packs.observe(this) { updatedPacks ->
-            adapter.updatePacks(updatedPacks)
+        lifecycleScope.launch {
+            viewModel.setUser(database.userDao.getUser(username!!))
+            val packs = database.packDao.getPacks()
+            viewModel.setPacks(packs)
+            val adapter = ImageAdapter(viewModel.getPacks(), viewModel)
+            binding.imageCarousel.adapter = adapter
         }
+
+
+
+
+
+
+
+        /*viewModel.packs.observe(this) { updatedPacks ->
+            adapter.updatePacks(updatedPacks)
+        }*/
 
        //Profile button popup
         binding.btnProfile?.setOnClickListener { view ->
@@ -92,12 +98,10 @@ class MainActivity : AppCompatActivity() {
         popupMenu.show()
     }
 
-    private fun loadPacksFromDB(){
-        lifecycleScope.launch {
-            val packs = AppDatabase.getInstance(applicationContext).packDao.getPacks()
-            viewModel.setPacks(packs)
-        }
-    }
+    /*private fun loadPacksFromDB(){
+        val packs = AppDatabase.getInstance(applicationContext).packDao.getPacks()
+        viewModel.setPacks(packs)
+    }*/
 
     /**
      * Function that handles when the user returns to this activity

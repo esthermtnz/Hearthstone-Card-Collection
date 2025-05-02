@@ -43,12 +43,12 @@ class ImageAdapter(
         holder.imageView.setOnClickListener {
             val currentTime = System.currentTimeMillis()
             if (currentTime - holder.lastClickTime < 300) {
-                viewModel.openUserPack(pack.id)
-                val counter = viewModel.packs.value?.size ?: 0
+                /*viewModel.openUserPack(pack.id)
+                val counter = viewModel.packs.value?.size ?: 0*/
 
                 Toast.makeText(
                     holder.imageView.context,
-                    "¡Sobre abierto! Sobres: $counter",
+                    "¡Sobre abierto! Sobres: ",//$counter",
                     Toast.LENGTH_SHORT
                 ).show()
             }

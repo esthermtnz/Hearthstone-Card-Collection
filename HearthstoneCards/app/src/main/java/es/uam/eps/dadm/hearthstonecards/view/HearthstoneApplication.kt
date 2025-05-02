@@ -9,6 +9,7 @@ import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.model.Card
 import es.uam.eps.dadm.hearthstonecards.model.Collection
 import es.uam.eps.dadm.hearthstonecards.model.CollectionCardCrossRef
+import es.uam.eps.dadm.hearthstonecards.model.Pack
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
@@ -66,6 +67,9 @@ class HearthstoneApplication: Application() {
             database.collectionCardCrossRefDao.addCollectionCardCrossRef(CollectionCardCrossRef(2,18))
             database.collectionCardCrossRefDao.addCollectionCardCrossRef(CollectionCardCrossRef(2,19))
             database.collectionCardCrossRefDao.addCollectionCardCrossRef(CollectionCardCrossRef(2,20))
+
+            database.packDao.addPack(Pack(1, "Priest", R.drawable.priest_pack))
+            database.packDao.addPack(Pack(2,"Warrior", R.drawable.warrior_pack))
 
 
 

@@ -15,7 +15,7 @@ interface UserDAO {
     fun getUsers(): List<User>
 
     @Query("SELECT * FROM user_table WHERE username= :username")
-    fun getUser(username: String): User?
+    suspend fun getUser(username: String): User?
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun addUser(user: User)

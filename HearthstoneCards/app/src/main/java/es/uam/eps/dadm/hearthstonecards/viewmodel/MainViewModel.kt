@@ -22,7 +22,7 @@ import timber.log.Timber
 class MainViewModel() : ViewModel() {
 
 
-    var packs: List<Pack> = emptyList()
+    private var packs: List<Pack> = emptyList()
 
     private var username: String? = null
     private var user: User? = null
