@@ -12,10 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.databinding.ActivityMainBinding
 import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 import timber.log.Timber
+import es.uam.eps.dadm.hearthstonecards.database.AppDatabase
+import kotlinx.coroutines.launch
+
 
 /**
  * Definition of the MainActivity class
@@ -31,6 +35,14 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        val database = AppDatabase.getInstance(applicationContext)
+        val sharedPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val username = sharedPrefs.getString("username", null)
+        viewModel.setUsername(username)
+        viewModel.setUser(database.userDao.getUser(username!!))
+
+
 
 
         val adapter = ImageAdapter(viewModel.packs.value ?: listOf(), viewModel)
@@ -80,12 +92,21 @@ class MainActivity : AppCompatActivity() {
         popupMenu.show()
     }
 
+    private fun loadPacksFromDB(){
+        lifecycleScope.launch {
+            val packs = AppDatabase.getInstance(applicationContext).packDao.getPacks()
+            viewModel.setPacks(packs)
+        }
+    }
+
     /**
      * Function that handles when the user returns to this activity
      */
     override fun onResume() {
         super.onResume()
-        val numPacks = viewModel.user.packs.size
+        val user = viewModel.getUser()
+
+        val numPacks = user?.openTokens
         Toast.makeText(this, "¡Bienvenido! Tienes $numPacks sobres para abrir", Toast.LENGTH_SHORT).show()
     }
 }

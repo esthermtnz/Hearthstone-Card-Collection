@@ -10,10 +10,10 @@ import es.uam.eps.dadm.hearthstonecards.model.Pack
 @Dao
 interface PackDAO {
     @Query("SELECT * FROM pack_table")
-    fun getPacks(): LiveData<List<Pack>>
+    fun getPacks(): List<Pack>
 
     @Query("SELECT * FROM pack_table WHERE id= :idPack")
-    fun getPack(idPack: Int): LiveData<Pack?>
+    fun getPack(idPack: Int): Pack?
 
     @Insert
     suspend fun addPack(pack: Pack)

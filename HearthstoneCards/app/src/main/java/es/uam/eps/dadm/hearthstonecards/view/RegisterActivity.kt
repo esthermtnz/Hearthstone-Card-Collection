@@ -69,6 +69,8 @@ class RegisterActivity : AppCompatActivity()  {
                     Timber.i("User registered successfully.")
                     runOnUiThread{
                         Toast.makeText(this@RegisterActivity, "Registration successful", Toast.LENGTH_SHORT).show()
+                        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                        sharedPreferences.edit().putString("username", username).apply()
                         val intent = Intent(this@RegisterActivity, MainActivity::class.java)
                         startActivity(intent)
                         Timber.i("Register done. Move to main page")

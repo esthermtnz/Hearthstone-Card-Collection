@@ -3,10 +3,13 @@
  */
 package es.uam.eps.dadm.hearthstonecards.viewmodel
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import es.uam.eps.dadm.hearthstonecards.R
+import es.uam.eps.dadm.hearthstonecards.database.AppDatabase
 import es.uam.eps.dadm.hearthstonecards.model.Card
 import es.uam.eps.dadm.hearthstonecards.model.Collection
 import es.uam.eps.dadm.hearthstonecards.model.Pack
@@ -16,114 +19,49 @@ import timber.log.Timber
 /**
  * Definition of the class
  */
-class MainViewModel : ViewModel() {
+class MainViewModel() : ViewModel() {
+
+
+    var packs: List<Pack> = emptyList()
+
+    private var username: String? = null
+    private var user: User? = null
+
+
 /*
-    var user = User(1,
-        "Juan",
-        "García",
-        "juangarcia@gmail.com",
-        "956700478",
-        "password",
-        "juanillo01",
-        "123456",
-        mutableListOf<Pack>(Pack(1,
-            "Warrior Pack",
-            R.drawable.warrior_pack,
-            cards = listOf(
-                Card(1, R.drawable.warrior_1, 0.2),
-                Card(2, R.drawable.warrior_2, 0.2),
-                Card(3, R.drawable.warrior_3, 0.7),
-                Card(4, R.drawable.warrior_4, 0.7),
-                Card(8, R.drawable.warrior_8, 0.05),
-            ),
-            collection = Collection(1,
-                "Warrior Collection",
-                cards = listOf(
-                    Card(1, R.drawable.warrior_1, 0.2),
-                    Card(2, R.drawable.warrior_2, 0.2),
-                    Card(3, R.drawable.warrior_3, 0.7),
-                    Card(4, R.drawable.warrior_4, 0.7),
-                    Card(5, R.drawable.warrior_5, 0.05),
-                    Card(6, R.drawable.warrior_6,0.2),
-                    Card(7, R.drawable.warrior_7, 0.7),
-                    Card(8, R.drawable.warrior_8, 0.05),
-                    Card(9, R.drawable.warrior_9, 0.01),
-                    Card(10, R.drawable.warrior_10, 0.01),),
-                obtained = mutableMapOf()
-            ),),
-            Pack(2,
-                "Priest Pack",
-                R.drawable.priest_pack,
-                cards = listOf(
-                    Card(11, R.drawable.priest_1, 0.2),
-                    Card(12, R.drawable.priest_2, 0.7),
-                    Card(13, R.drawable.priest_3, 0.7),
-                    Card(15, R.drawable.priest_5, 0.2),
-                    Card(16, R.drawable.priest_6, 0.2),
-                ),
-                collection = Collection(2,
-                    "Priest Collection",
-                    cards = listOf(
-                        Card(11, R.drawable.priest_1, 0.2),
-                        Card(12, R.drawable.priest_2, 0.7),
-                        Card(13, R.drawable.priest_3, 0.7),
-                        Card(14, R.drawable.priest_4, 0.7),
-                        Card(15, R.drawable.priest_5, 0.2),
-                        Card(16, R.drawable.priest_6, 0.2),
-                        Card(17, R.drawable.priest_7, 0.05),
-                        Card(18, R.drawable.priest_8, 0.05),
-                        Card(19, R.drawable.priest_9, 0.01),
-                        Card(20, R.drawable.priest_10, 0.01)
-                    ),
-                    obtained =  mutableMapOf()
-                ))
-            ),
-        mutableListOf<Collection>(
-            Collection(1,
-                "Warrior Collection",
-                cards = listOf(
-                    Card(1, R.drawable.warrior_1, 0.2),
-                    Card(2, R.drawable.warrior_2, 0.2),
-                    Card(3, R.drawable.warrior_3, 0.7),
-                    Card(4, R.drawable.warrior_4, 0.7),
-                    Card(5, R.drawable.warrior_5, 0.05),
-                    Card(6, R.drawable.warrior_6,0.2),
-                    Card(7, R.drawable.warrior_7, 0.7),
-                    Card(8, R.drawable.warrior_8, 0.05),
-                    Card(9, R.drawable.warrior_9, 0.01),
-                    Card(10, R.drawable.warrior_10, 0.01),),
-                obtained = mutableMapOf()
-            ),
-            Collection(2,
-                "Priest Collection",
-                cards = listOf(
-                    Card(11, R.drawable.priest_1, 0.2),
-                    Card(12, R.drawable.priest_2, 0.7),
-                    Card(13, R.drawable.priest_3, 0.7),
-                    Card(14, R.drawable.priest_4, 0.7),
-                    Card(15, R.drawable.priest_5, 0.2),
-                    Card(16, R.drawable.priest_6, 0.2),
-                    Card(17, R.drawable.priest_7, 0.05),
-                    Card(18, R.drawable.priest_8, 0.05),
-                    Card(19, R.drawable.priest_9, 0.01),
-                    Card(20, R.drawable.priest_10, 0.01)
-                ),
-                obtained =  mutableMapOf()
-            ),
-        )
-    )*/
-
-    private val _packs = MutableLiveData<List<Pack>>(user.packs)
-    val packs: LiveData<List<Pack>> get() = _packs
-
     fun openUserPack(packId: Int) {
         user.openPack(packId)
         _packs.value = user.packs
-    }
+    }*/
 
     init {
         Timber.i("MainViewModel created")
     }
+
+    fun setUsername(username: String?){
+        this.username = username
+    }
+
+    fun setUser(user: User?){
+        this.user = user
+    }
+
+    fun getUser(): User?{
+        return this.user
+    }
+
+    fun getUsername(): String?{
+        return this.username
+    }
+
+    fun setPacks(packs: List<Pack>){
+        this.packs = packs
+    }
+
+    fun getPacks(): List<Pack>{
+        return this.packs
+    }
+
 
     override fun onCleared() {
         super.onCleared()

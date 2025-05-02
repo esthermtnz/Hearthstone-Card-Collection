@@ -2,6 +2,7 @@
  * Class created to make the login page functional
  */
 package es.uam.eps.dadm.hearthstonecards.view
+import android.content.Context
 import android.content.Intent
 import es.uam.eps.dadm.hearthstonecards.databinding.ActivityLoginBinding
 import android.os.Bundle
