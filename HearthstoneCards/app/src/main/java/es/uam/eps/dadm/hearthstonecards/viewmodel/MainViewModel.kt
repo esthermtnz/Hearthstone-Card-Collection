@@ -26,7 +26,8 @@ class MainViewModel() : ViewModel() {
 
     private var username: String? = null
     private var user: User? = null
-
+    private val _openTokens = MutableLiveData<Int>()
+    val openTokens: LiveData<Int> get() = _openTokens
 
 /*
     fun openUserPack(packId: Int) {
@@ -44,6 +45,7 @@ class MainViewModel() : ViewModel() {
 
     fun setUser(user: User?){
         this.user = user
+        _openTokens.value = user?.openTokens ?:0
     }
 
     fun getUser(): User?{
@@ -61,6 +63,10 @@ class MainViewModel() : ViewModel() {
     fun getPacks(): List<Pack>{
         return this.packs
     }
+
+    /*fun getOpenTokens(): Int{
+        return this.user?.openTokens ?:0
+    }*/
 
 
     override fun onCleared() {

@@ -52,11 +52,12 @@
                     android:layout_marginEnd="16dp"/>
 
                 <!-- Counter -->
+                    <!--android:text='@{viewModel.packs != null ? String.valueOf(viewModel.packs.size()) : "0"}'-->
                 <TextView
                     android:id="@+id/pack_counter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{viewModel.packs != null ? String.valueOf(viewModel.packs.size()) : "0"}'
+                    android:text='@{String.valueOf(viewModel.openTokens)}'
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:layout_gravity="center_vertical"
