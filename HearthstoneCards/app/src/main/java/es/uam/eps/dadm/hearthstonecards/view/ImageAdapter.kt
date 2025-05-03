@@ -46,12 +46,17 @@ class ImageAdapter(
             if (currentTime - holder.lastClickTime < 300) {
                 /*viewModel.openUserPack(pack.id)
                 val counter = viewModel.packs.value?.size ?: 0*/
+                if(viewModel.openTokens.value != 0){
                 onPackOpen(pack.id)
                 Toast.makeText(
                     holder.imageView.context,
-                    "¡Sobre abierto! Sobres disponibles: ${viewModel.openTokens} ",//$counter",
+                    "¡Sobre abierto! Sobres disponibles: ${viewModel.openTokens.value?.minus(1)} ",//$counter",
                     Toast.LENGTH_SHORT
                 ).show()
+                }
+                else{
+                    Toast.makeText(holder.imageView.context, "No tienes sobres disponibles!", Toast.LENGTH_SHORT).show()
+                }
             }
             holder.lastClickTime = currentTime
         }
