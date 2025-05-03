@@ -10,13 +10,13 @@ import es.uam.eps.dadm.hearthstonecards.model.CollectionCardCrossRef
 @Dao
 interface CollectionCardCrossRefDAO {
     @Query("SELECT * FROM collection_card_table")
-    fun getCollectionCardCrossRefs(): LiveData<List<CollectionCardCrossRef>>
+    fun getCollectionCardCrossRefs(): List<CollectionCardCrossRef>
 
     @Query("SELECT * FROM collection_card_table WHERE cardId = :idCard")
-    fun getCollectionFromCardId(idCard: Int): LiveData<CollectionCardCrossRef>
+    fun getCollectionFromCardId(idCard: Int): CollectionCardCrossRef?
 
     @Query("SELECT * FROM collection_card_table WHERE collectionId = :idCollection")
-    fun getCardsFromCollectionId(idCollection: Int): LiveData<List<CollectionCardCrossRef>>
+    fun getCardsFromCollectionId(idCollection: Int): List<CollectionCardCrossRef>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCollectionCardCrossRef(collectionCardCrossRef: CollectionCardCrossRef)

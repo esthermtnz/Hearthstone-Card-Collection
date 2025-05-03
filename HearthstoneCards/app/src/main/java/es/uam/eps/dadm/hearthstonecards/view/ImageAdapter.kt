@@ -22,7 +22,8 @@ import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
  */
 class ImageAdapter(
     private var packs: List<Pack>,
-    private val viewModel: MainViewModel
+    private val viewModel: MainViewModel,
+    private val onPackOpen: (Int) -> Unit
 ) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -45,10 +46,10 @@ class ImageAdapter(
             if (currentTime - holder.lastClickTime < 300) {
                 /*viewModel.openUserPack(pack.id)
                 val counter = viewModel.packs.value?.size ?: 0*/
-
+                onPackOpen(pack.id)
                 Toast.makeText(
                     holder.imageView.context,
-                    "¡Sobre abierto! Sobres: ",//$counter",
+                    "¡Sobre abierto! Sobres disponibles: ${viewModel.openTokens} ",//$counter",
                     Toast.LENGTH_SHORT
                 ).show()
             }

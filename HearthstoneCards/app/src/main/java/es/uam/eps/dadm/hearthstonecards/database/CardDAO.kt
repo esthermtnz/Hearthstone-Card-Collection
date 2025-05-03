@@ -9,10 +9,10 @@ import es.uam.eps.dadm.hearthstonecards.model.Card
 @Dao
 interface CardDAO {
     @Query("SELECT * FROM card_table")
-    fun getCards(): LiveData<List<Card>>
+    fun getCards(): List<Card>
 
     @Query("SELECT * FROM card_table WHERE id = :idCard")
-    fun getCard(idCard: Int): LiveData<Card?>
+    fun getCard(idCard: Int): Card?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCard(card: Card)

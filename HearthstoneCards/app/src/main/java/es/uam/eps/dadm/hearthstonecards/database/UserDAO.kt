@@ -22,4 +22,7 @@ interface UserDAO {
 
     @Query("DELETE FROM user_table")
     suspend fun removeUsers()
+
+    @Query("UPDATE user_table SET openTokens=openTokens-1 WHERE username=:username")
+    suspend fun decreaseToken(username: String)
 }

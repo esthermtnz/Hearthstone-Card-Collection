@@ -18,7 +18,10 @@ import es.uam.eps.dadm.hearthstonecards.databinding.ActivityMainBinding
 import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 import timber.log.Timber
 import es.uam.eps.dadm.hearthstonecards.database.AppDatabase
+import es.uam.eps.dadm.hearthstonecards.model.ObtainedCardCrossRef
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 /**
@@ -44,7 +47,11 @@ class MainActivity : AppCompatActivity() {
             viewModel.setUser(database.userDao.getUser(username!!))
             val packs = database.packDao.getPacks()
             viewModel.setPacks(packs)
-            val adapter = ImageAdapter(viewModel.getPacks(), viewModel)
+            val adapter = ImageAdapter(viewModel.getPacks(), viewModel){ packId ->
+                lifecycleScope.launch{
+                    openPack(packId)
+                }
+            }
             binding.imageCarousel.adapter = adapter
         }
 
@@ -103,15 +110,57 @@ class MainActivity : AppCompatActivity() {
         viewModel.setPacks(packs)
     }*/
 
+    suspend fun openPack(packId: Int){
+        lifecycleScope.launch{
+            withContext(Dispatchers.IO){
+            val database = AppDatabase.getInstance(applicationContext)
+            val user = viewModel.getUser() ?: return@withContext
+
+            if(user.openTokens <= 0){
+                Toast.makeText(this@MainActivity, "No tienes más sobres disponibles en este momento", Toast.LENGTH_SHORT).show()
+                return@withContext
+            }
+                val cards = database.collectionCardCrossRefDao.getCardsFromCollectionId(packId)?.shuffled()?.take(5)
+                val cardIds = cards?.map {it.cardId}
+                for (card in cardIds!!){
+                    val actualQuantity = database.obtainedCardCrossRefDao.getQuantity(user.username, packId, card)
+                    if (actualQuantity == null){
+                        database.obtainedCardCrossRefDao.addObtainedCard(
+                            ObtainedCardCrossRef(user.username, packId, card, 1)
+                        )
+                    }
+                    else{
+                        database.obtainedCardCrossRefDao.updateQuantity(
+                            user.username, packId, card, actualQuantity+1
+                        )
+                    }
+                }
+
+                database.userDao.decreaseToken(user.username)
+                withContext(Dispatchers.Main) {
+                    user.openTokens -= 1
+                    viewModel.setUser(user)
+                }
+            }
+        }
+    }
+
     /**
      * Function that handles when the user returns to this activity
      */
     override fun onResume() {
         super.onResume()
-        val user = viewModel.getUser()
 
-        val numPacks = user?.openTokens
+        viewModel.openTokens.observe(this){ tokens ->
+            Toast.makeText(this, "¡Bienvenido! Tienes $tokens sobres para abrir", Toast.LENGTH_SHORT).show()
+
+        }
+
+
+        /*val numPacks = viewModel.openTokens.value
         Toast.makeText(this, "¡Bienvenido! Tienes $numPacks sobres para abrir", Toast.LENGTH_SHORT).show()
+        */
     }
+
 }
 

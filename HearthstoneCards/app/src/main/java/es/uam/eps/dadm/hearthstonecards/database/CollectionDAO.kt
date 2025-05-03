@@ -10,10 +10,10 @@ import es.uam.eps.dadm.hearthstonecards.model.Collection
 @Dao
 interface CollectionDAO {
     @Query("SELECT * FROM collection_table")
-    fun getCollections(): LiveData<List<Collection>>
+    fun getCollections(): List<Collection>
 
     @Query("SELECT * FROM collection_table WHERE id = :idCollection")
-    fun getCollection(idCollection: Int): LiveData<Collection?>
+    fun getCollection(idCollection: Int): Collection?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCollection(collection: Collection)

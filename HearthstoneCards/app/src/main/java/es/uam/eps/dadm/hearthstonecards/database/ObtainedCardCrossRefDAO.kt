@@ -18,7 +18,7 @@ interface ObtainedCardCrossRefDAO {
     fun getObtainedCardsFromUsernameAndCollectionId(username: String, idCollection:Int): LiveData<List<ObtainedCardCrossRef>>
 
     @Query("SELECT quantity FROM obtained_card_table WHERE username = :username AND collectionId = :idCollection AND cardId = :idCard")
-    fun getQuantity(username: String, idCollection: Int, idCard: Int): Int
+    fun getQuantity(username: String, idCollection: Int, idCard: Int): Int?
 
     @Insert
     suspend fun addObtainedCard(obtainedCardCrossRef: ObtainedCardCrossRef)
