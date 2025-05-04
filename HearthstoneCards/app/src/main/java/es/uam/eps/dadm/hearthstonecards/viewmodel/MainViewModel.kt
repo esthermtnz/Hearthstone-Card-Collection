@@ -26,14 +26,19 @@ class MainViewModel() : ViewModel() {
 
     private var username: String? = null
     private var user: User? = null
+    //Main
     private val _openTokens = MutableLiveData<Int>()
     val openTokens: LiveData<Int> get() = _openTokens
+    //Profile
+    private val _userName = MutableLiveData<String>()
+    val userName: LiveData<String> get() = _userName
+    private val _userSurname = MutableLiveData<String>()
+    val userSurname: LiveData<String> get() = _userSurname
+    private val _userEmail = MutableLiveData<String>()
+    val userEmail: LiveData<String> get() = _userEmail
+    private val _userPhone = MutableLiveData<String>()
+    val userPhone: LiveData<String> get() = _userPhone
 
-/*
-    fun openUserPack(packId: Int) {
-        user.openPack(packId)
-        _packs.value = user.packs
-    }*/
 
     init {
         Timber.i("MainViewModel created")
@@ -46,6 +51,10 @@ class MainViewModel() : ViewModel() {
     fun setUser(user: User?){
         this.user = user
         _openTokens.value = user?.openTokens ?:0
+        _userName.value = user?.name
+        _userSurname.value = user?.surname
+        _userEmail.value = user?.email
+        _userPhone.value = user?.tlf
     }
 
     fun getUser(): User?{
@@ -64,9 +73,8 @@ class MainViewModel() : ViewModel() {
         return this.packs
     }
 
-    /*fun getOpenTokens(): Int{
-        return this.user?.openTokens ?:0
-    }*/
+
+
 
 
     override fun onCleared() {

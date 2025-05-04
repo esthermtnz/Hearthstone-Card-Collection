@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity()  {
             val firstName = binding.firstName.text.toString().trim()
             val lastName = binding.lastName.text.toString().trim()
             val email = binding.email.text.toString().trim()
-            val phoneNumber = binding.telephoneNumber.toString().trim()
+            val phoneNumber = binding.telephoneNumber.text.toString().trim()
 
             //check data is not blank
             if (username.isBlank() || password.isBlank() || firstName.isBlank() ||
