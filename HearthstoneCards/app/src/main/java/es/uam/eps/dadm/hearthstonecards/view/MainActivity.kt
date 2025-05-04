@@ -94,8 +94,13 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
-                R.id.action_friends -> {
-                    // Acción para "Amigos"
+                R.id.action_logout -> {
+                    val sharedPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                    sharedPrefs.edit().remove("username").apply()
+
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
                     true
                 }
                 else -> false
