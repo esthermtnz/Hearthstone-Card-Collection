@@ -9,6 +9,7 @@ import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import es.uam.eps.dadm.hearthstonecards.R
@@ -49,6 +50,14 @@ class ProfileActivity : AppCompatActivity() {
 
         }
 
+        binding.btnProfile.setOnClickListener {
+            showFragment()
+        }
+
     }
 }
 
+private fun showFragment() {
+    val  fragment = ProfileIconFragment()
+
+}
