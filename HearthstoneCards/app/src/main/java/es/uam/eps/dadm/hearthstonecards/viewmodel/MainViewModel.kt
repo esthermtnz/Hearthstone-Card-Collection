@@ -38,6 +38,8 @@ class MainViewModel() : ViewModel() {
     val userEmail: LiveData<String> get() = _userEmail
     private val _userPhone = MutableLiveData<String>()
     val userPhone: LiveData<String> get() = _userPhone
+    private val _userIcon = MutableLiveData<String>()
+    val userIcon: LiveData<String> get() = _userIcon
 
 
     init {
@@ -55,6 +57,7 @@ class MainViewModel() : ViewModel() {
         _userSurname.value = user?.surname
         _userEmail.value = user?.email
         _userPhone.value = user?.tlf
+        _userIcon.value = user?.icon
     }
 
     fun getUser(): User?{
@@ -73,6 +76,16 @@ class MainViewModel() : ViewModel() {
         return this.packs
     }
 
+    fun updateUserIcon(context: Context, iconName: String) {
+        _userIcon.value = iconName
+        user?.let {
+            it.icon = iconName
+            val dao = AppDatabase.getInstance(context).userDao
+            Thread {
+                dao.updateUser(it)
+            }.start()
+        }
+    }
 
 
 

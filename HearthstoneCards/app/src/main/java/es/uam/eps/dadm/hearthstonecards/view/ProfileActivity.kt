@@ -55,9 +55,16 @@ class ProfileActivity : AppCompatActivity() {
         }
 
     }
+
+    fun onIconSelected(iconName: String) {
+        viewModel.updateUserIcon(this, iconName)
+        Toast.makeText(this, "Icon selected: $iconName", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showFragment() {
+        val  fragment = ProfileIconFragment()
+        fragment.show(supportFragmentManager, "profile_icon")
+
+    }
 }
 
-private fun showFragment() {
-    val  fragment = ProfileIconFragment()
-
-}

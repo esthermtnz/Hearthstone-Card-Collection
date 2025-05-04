@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <import type="android.view.View"/>
@@ -32,10 +33,10 @@
         <!-- Profile Button -->
         <ImageView
             android:id="@+id/btn_profile"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_profile"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:scaleType="fitCenter"
+            app:iconName="@{viewModel.userIcon}"
             android:layout_gravity="center"
             android:background="?attr/selectableItemBackground"
             />

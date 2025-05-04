@@ -22,4 +22,5 @@
     <string name="priest_collection">Colección Sacerdote</string>
 
     <string name="load_collection_msg">Colección cargada</string>
+    <string name="icon_selection_msg">Selecciona un icono</string>
 </resources>

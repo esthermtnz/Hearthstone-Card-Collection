@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import es.uam.eps.dadm.hearthstonecards.model.Card
 import es.uam.eps.dadm.hearthstonecards.model.Collection
 import es.uam.eps.dadm.hearthstonecards.model.Pack
@@ -25,4 +26,7 @@ interface UserDAO {
 
     @Query("UPDATE user_table SET openTokens=openTokens-1 WHERE username=:username")
     suspend fun decreaseToken(username: String)
+
+    @Update
+    fun updateUser(user: User)
 }

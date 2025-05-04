@@ -21,6 +21,7 @@
     <string name="warrior_collection">Warrior Collection</string>
     <string name="priest_collection">Priest Collection</string>
 
+    <string name="icon_selection_msg">Pick an icon</string>
     <string name="load_collection_msg">Collection loaded</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

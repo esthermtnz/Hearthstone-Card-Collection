@@ -29,6 +29,7 @@ data class User(
     @PrimaryKey
     var username: String,
     var openTokens: Int,
+    var icon: String = "default_icon",
     //var packs: MutableList<Pack>,
     //var collections: MutableList<Collection>
 ) {

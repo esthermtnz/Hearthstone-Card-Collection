@@ -24,7 +24,7 @@ import es.uam.eps.dadm.hearthstonecards.database.ObtainedCardCrossRefDAO
 
 @Database(entities=[Card::class, Collection::class, Pack::class, User::class,
         CollectionCardCrossRef::class, UserPackCrossRef::class, ObtainedCardCrossRef::class],
-        version = 2, exportSchema=false)
+        version = 3, exportSchema=false)
 abstract class AppDatabase : RoomDatabase(){
     abstract val cardDao: CardDAO
     abstract val collectionDao: CollectionDAO
