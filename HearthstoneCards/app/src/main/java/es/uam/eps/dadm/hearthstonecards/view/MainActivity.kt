@@ -107,6 +107,10 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, CollectionsActivity::class.java))
                     true
                 }
+                R.id.action_configuration -> {
+                    startActivity(Intent(this, ConfigurationActivity::class.java))
+                    true
+                }
                 R.id.action_logout -> {
                     val sharedPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
                     sharedPrefs.edit().remove("username").apply()

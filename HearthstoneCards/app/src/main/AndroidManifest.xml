@@ -28,6 +28,7 @@
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.ProfileActivity" />
         <activity android:name=".view.CollectionsActivity" />
+        <activity android:name=".view.ConfigurationActivity" />
 
     </application>
 

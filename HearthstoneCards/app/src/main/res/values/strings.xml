@@ -23,6 +23,10 @@
     <string name="priest_icon">Priest Icon</string>
     <string name="warrior_icon">Warrior Icon</string>
 
+    <string name="logout_menu_str">Log out</string>
+    <string name="configuration_str">Download/Upload Backup</string>
+    <string name="upload_backup">Upload Backup</string>
+    <string name="download_backup">Download Backup</string>
 
     <string name="icon_selection_msg">Pick an icon</string>
     <string name="load_collection_msg">Collection loaded</string>

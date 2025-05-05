@@ -23,6 +23,12 @@
     <string name="priest_icon">Icono Sacerdote</string>
     <string name="warrior_icon">Icono Guerrero</string>
 
+    <string name="upload_backup">Subir Backup</string>
+    <string name="download_backup">Descargar Backup</string>
+
+    <string name="logout_menu_str">Cerrar sesión</string>
+    <string name="configuration_str">Descargar/Subir Backup</string>
+
     <string name="load_collection_msg">Colección cargada</string>
     <string name="icon_selection_msg">Selecciona un icono</string>
 </resources>
