@@ -20,6 +20,9 @@
     <string name="priest_pack">Priest Pack</string>
     <string name="warrior_collection">Warrior Collection</string>
     <string name="priest_collection">Priest Collection</string>
+    <string name="priest_icon">Priest Icon</string>
+    <string name="warrior_icon">Warrior Icon</string>
+
 
     <string name="icon_selection_msg">Pick an icon</string>
     <string name="load_collection_msg">Collection loaded</string>

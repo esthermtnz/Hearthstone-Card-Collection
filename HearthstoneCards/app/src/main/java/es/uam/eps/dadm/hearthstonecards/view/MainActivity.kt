@@ -22,6 +22,13 @@ import es.uam.eps.dadm.hearthstonecards.model.ObtainedCardCrossRef
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
+
+private lateinit var googleSignInClient: GoogleSignInClient
+
 
 
 /**
@@ -38,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
 
         val database = AppDatabase.getInstance(applicationContext)
         val sharedPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
@@ -85,22 +100,30 @@ class MainActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.action_profile -> {
-                    val intent = Intent(this, ProfileActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, ProfileActivity::class.java))
                     true
                 }
                 R.id.action_collection -> {
-                    val intent = Intent(this, CollectionsActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, CollectionsActivity::class.java))
                     true
                 }
                 R.id.action_logout -> {
                     val sharedPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
                     sharedPrefs.edit().remove("username").apply()
 
-                    val intent = Intent(this, LoginActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
+                    val auth = FirebaseAuth.getInstance()
+                    val currentUser = auth.currentUser
+                    val isGoogleUser = currentUser?.providerData?.any { it.providerId == "google.com" } == true
+
+                    if (isGoogleUser) {
+                        googleSignInClient.signOut().addOnCompleteListener {
+                            auth.signOut()
+                            redirectToLogin()
+                        }
+                    } else {
+                        auth.signOut()
+                        redirectToLogin()
+                    }
                     true
                 }
                 else -> false
@@ -108,6 +131,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         popupMenu.show()
+    }
+
+    private fun redirectToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 
     /*private fun loadPacksFromDB(){

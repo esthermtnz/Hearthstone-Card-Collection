@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "164828669169",
+    "firebase_url": "https://esthermartinezblancocollection-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "esthermartinezblancocollection",
+    "storage_bucket": "esthermartinezblancocollection.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164828669169:android:f87ded7ad35bc2c10fb550",
+        "android_client_info": {
+          "package_name": "es.uam.eps.dadm.hearthstonecards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164828669169-d633vr0crkpji5f00cqn0hid51c9a897.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.uam.eps.dadm.hearthstonecards",
+            "certificate_hash": "549587380879fe16bfc9eb38ef490728e0b1a394"
+          }
+        },
+        {
+          "client_id": "164828669169-inrb8k8e3tfo6596e67emv2lii071f77.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYfp2lSQIofJEI5ns4qh53ySOx3vfnOok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164828669169-inrb8k8e3tfo6596e67emv2lii071f77.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
