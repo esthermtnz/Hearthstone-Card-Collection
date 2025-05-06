@@ -19,6 +19,7 @@ import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import com.google.firebase.firestore.FirebaseFirestore
+import es.uam.eps.dadm.hearthstonecards.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
@@ -93,59 +94,73 @@ class ConfigurationActivity : AppCompatActivity() {
         }
 
         binding.btnDownloadFirebase.setOnClickListener {
-            firestore.collection("users").document(username!!)
-                .get()
-                .addOnSuccessListener { document->
-                    lifecycleScope.launch {
-                        withContext(Dispatchers.IO){
+            try{
+                firestore.collection("users").document(username!!)
+                    .get()
+                    .addOnSuccessListener { document->
+                        lifecycleScope.launch {
+                            withContext(Dispatchers.IO){
 
-                            if(document != null && document.exists()) {
-                                val userData = document.get("user_data") as? Map<String, Any>
-                                val obtainedCards =
-                                    document.get("obtained_cards") as? List<Map<String, Any>>
+                                if(document != null && document.exists()) {
+                                    val userData = document.get("user_data") as? Map<String, Any>
+                                    val obtainedCards =
+                                        document.get("obtained_cards") as? List<Map<String, Any>>
 
-                                if (userData != null) {
-                                    val user = viewModel.getUser()
-                                    if (user != null) {
-                                        user.openTokens = (userData["openTokens"] as Long).toInt()
-                                        database.userDao.updateUser(user)
-                                        withContext(Dispatchers.Main){
-                                            viewModel.setUser(user)
+                                    if (userData != null) {
+                                        val user = User(userData.get("name").toString(),
+                                            userData.get("surname").toString(),
+                                            userData.get("email").toString(),
+                                            userData.get("tlf").toString(),
+                                            userData.get("password").toString(),
+                                            userData.get("username").toString(),
+                                            (userData.get("openTokens") as Long).toInt(),
+                                            userData.get("icon").toString()
+                                            )
+
+                                        if (user != null) {
+                                            user.openTokens = (userData["openTokens"] as Long).toInt()
+                                            database.userDao.updateUser(user)
+                                            withContext(Dispatchers.Main){
+                                                viewModel.setUser(user)
+                                            }
                                         }
                                     }
-                                }
 
-                                obtainedCards?.forEach {
-                                    val packId = (it["collectionId"] as Long).toInt()
-                                    val cardId = (it["cardId"] as Long).toInt()
-                                    val quantity = (it["quantity"] as Long).toInt()
-                                    database.obtainedCardCrossRefDao.updateQuantity(
-                                        username,
-                                        packId,
-                                        cardId,
-                                        quantity
-                                    )
+                                    obtainedCards?.forEach {
+                                        val packId = (it["collectionId"] as Long).toInt()
+                                        val cardId = (it["cardId"] as Long).toInt()
+                                        val quantity = (it["quantity"] as Long).toInt()
+                                        database.obtainedCardCrossRefDao.updateQuantity(
+                                            username,
+                                            packId,
+                                            cardId,
+                                            quantity
+                                        )
+                                    }
+                                    withContext(Dispatchers.Main){
+                                        Toast.makeText(
+                                            applicationContext,
+                                            "Backup restaurado",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 }
-                                withContext(Dispatchers.Main){
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "Backup restaurado",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
-                            else{
-                                withContext(Dispatchers.Main){
-                                    Toast.makeText(applicationContext, "No se ha encontrado el backup", Toast.LENGTH_SHORT).show()
+                                else{
+                                    withContext(Dispatchers.Main){
+                                        Toast.makeText(applicationContext, "No se ha encontrado el backup", Toast.LENGTH_SHORT).show()
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                .addOnFailureListener {
-                    Toast.makeText(applicationContext, "Error al descargar Backup", Toast.LENGTH_SHORT).show()
-                    //Timber.e(it)
-                }
+                    .addOnFailureListener {
+                        Toast.makeText(applicationContext, "Error al descargar Backup", Toast.LENGTH_SHORT).show()
+                        //Timber.e(it)
+                    }
+            }
+            catch(e: Exception){
+                Timber.e("Error: ${e.message}")
+            }
         }
 
         //Back button
