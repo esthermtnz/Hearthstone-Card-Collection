@@ -21,12 +21,17 @@ import timber.log.Timber
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
+import es.uam.eps.dadm.hearthstonecards.view.ApiService
 
 /**
  * Definition of the ProfileActivity class
  */
 class ConfigurationActivity : AppCompatActivity() {
     lateinit var binding: ActivityConfigurationBinding
+    lateinit var apiService: ApiService
 
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
@@ -42,7 +47,20 @@ class ConfigurationActivity : AppCompatActivity() {
         val firestore = FirebaseFirestore.getInstance()
         val sharedPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
         val username = sharedPrefs.getString("username", null)
+
+        val retrofit = Retrofit.Builder().baseUrl("https://jsonplaceholder.typicode.com/")
+            .addConverterFactory(GsonConverterFactory.create()).build()
+        apiService = retrofit.create(ApiService::class.java)
+
         viewModel.setUsername(username)
+
+        binding.btnGET?.setOnClickListener {
+            getCommentFromApi()
+        }
+        binding.btnPOST?.setOnClickListener {
+            postCommentToApi()
+        }
+
         binding.btnUploadFirebase.setOnClickListener {
             lifecycleScope.launch {
                 withContext(Dispatchers.IO){
@@ -139,5 +157,52 @@ class ConfigurationActivity : AppCompatActivity() {
         }
     }
 
+
+    private fun getCommentFromApi(){
+        lifecycleScope.launch {
+            try {
+                val response = apiService.getComment(1)
+                if(response.isSuccessful){
+                    val comment = response.body()
+                    Toast.makeText(applicationContext, "Comment: $comment", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(applicationContext, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+            catch (e: Exception){
+                Toast.makeText(applicationContext, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun postCommentToApi(){
+        val newComment = Comment(
+            postId = 1,
+            name = "test",
+            email = "test@gmail.com",
+            body = "test body",
+            id = 1
+        )
+        lifecycleScope.launch{
+            val response = apiService.postComment(newComment)
+            try {
+                if (response.isSuccessful) {
+                    val postedComment = response.body()
+                    Toast.makeText(applicationContext, "POSTed: $postedComment", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(
+                        applicationContext,
+                        "Error: ${response.message()}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            catch(e: Exception){
+                Toast.makeText(applicationContext, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
 }

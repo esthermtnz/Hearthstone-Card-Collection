@@ -13,6 +13,8 @@ import es.uam.eps.dadm.hearthstonecards.model.Pack
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
 class HearthstoneApplication: Application() {
@@ -22,6 +24,8 @@ class HearthstoneApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+
         applicationScope.launch {
             database.cardDao.addCard(Card(1, R.drawable.priest_1, 0.1))
             database.cardDao.addCard(Card(2, R.drawable.priest_2, 0.2))
@@ -78,5 +82,6 @@ class HearthstoneApplication: Application() {
         }
 
         Timber.plant(Timber.DebugTree())
+
     }
 }
