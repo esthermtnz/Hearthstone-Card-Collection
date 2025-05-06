@@ -30,6 +30,7 @@
 
     <string name="icon_selection_msg">Pick an icon</string>
     <string name="load_collection_msg">Collection loaded</string>
+    <string name="default_web_client_id">164828669169-inrb8k8e3tfo6596e67emv2lii071f77.apps.googleusercontent.com</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

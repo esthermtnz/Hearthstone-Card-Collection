@@ -131,6 +131,7 @@ class LoginActivity : AppCompatActivity() {
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 Toast.makeText(this, "Error al iniciar sesión con Google", Toast.LENGTH_SHORT).show()
+                Timber.e(e, "Google sign-in failed:${e.statusCode}")
             }
         }
     }

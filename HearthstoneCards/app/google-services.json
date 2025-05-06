@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "164828669169-lm3hj250m8g01e673mfm9ular3te2ri1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.uam.eps.dadm.hearthstonecards",
+            "certificate_hash": "3805dbf31272d81b1230cefb69fcb0ca5be81fbe"
+          }
+        },
+        {
           "client_id": "164828669169-inrb8k8e3tfo6596e67emv2lii071f77.apps.googleusercontent.com",
           "client_type": 3
         }
