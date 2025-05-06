@@ -42,14 +42,18 @@ class CollectionsActivity : AppCompatActivity() {
                 database.collectionDao.getCollections()
             }
 
-            val adapter = CollectionPagerAdapter(this@CollectionsActivity, colecciones)
+            // Adapter to see each collection as a tab
+            val adapter = CollectionPagerAdapter(this@CollectionsActivity, colecciones, username!!)
+
             binding.viewPager.adapter = adapter
 
+            //Tab for each collection
             TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
                 tab.text = colecciones[position].name
             }.attach()
         }
 
+        // Button to go back to main activity
         binding.btnBack.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

@@ -30,6 +30,16 @@
 
     <string name="icon_selection_msg">Pick an icon</string>
     <string name="load_collection_msg">Collection loaded</string>
+
+
+    <string name="card_number">Card # %1$d</string>
+    <string name="rarity_common">Common</string>
+    <string name="rarity_rare">Rare</string>
+    <string name="rarity_epic">Epic</string>
+    <string name="rarity_legendary">Legendary</string>
+    <string name="rarity_prefix">Rarity: %1$s</string>
+
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
