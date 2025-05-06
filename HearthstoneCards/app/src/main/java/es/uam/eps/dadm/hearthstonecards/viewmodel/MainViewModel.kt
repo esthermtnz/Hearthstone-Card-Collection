@@ -40,7 +40,7 @@ class MainViewModel() : ViewModel() {
     val userPhone: LiveData<String> get() = _userPhone
     private val _userIcon = MutableLiveData<String>()
     val userIcon: LiveData<String> get() = _userIcon
-
+    private lateinit var database: AppDatabase
 
     init {
         Timber.i("MainViewModel created")

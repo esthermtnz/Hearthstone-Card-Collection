@@ -31,4 +31,11 @@
 
     <string name="load_collection_msg">Colección cargada</string>
     <string name="icon_selection_msg">Selecciona un icono</string>
+
+    <string name="card_number">Carta nº %1$d</string>
+    <string name="rarity_common">Común</string>
+    <string name="rarity_rare">Rara</string>
+    <string name="rarity_epic">Épica</string>
+    <string name="rarity_legendary">Legendaria</string>
+    <string name="rarity_prefix">Rareza: %1$s</string>
 </resources>

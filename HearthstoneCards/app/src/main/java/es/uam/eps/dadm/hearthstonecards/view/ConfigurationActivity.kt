@@ -137,8 +137,7 @@ class ConfigurationActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
-
     }
 
-}
 
+}

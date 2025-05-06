@@ -14,8 +14,19 @@ interface ObtainedCardCrossRefDAO {
     @Query("SELECT * FROM obtained_card_table WHERE username = :username")
     fun getObtainedCardsFromUsername(username: String): List<ObtainedCardCrossRef>
 
-    @Query("SELECT * FROM obtained_card_table WHERE username = :username AND collectionId = :idCollection")
-    fun getObtainedCardsFromUsernameAndCollectionId(username: String, idCollection:Int): LiveData<List<ObtainedCardCrossRef>>
+    @Query("""
+    SELECT card_table.*
+    FROM card_table
+    INNER JOIN obtained_card_table
+    ON card_table.id = obtained_card_table.cardId
+    WHERE obtained_card_table.username = :username
+    AND obtained_card_table.collectionId = :idCollection
+""")
+    suspend fun getObtainedCardsFromUsernameAndCollectionId(
+        username: String,
+        idCollection: Int
+    ): List<Card>
+
 
     @Query("SELECT quantity FROM obtained_card_table WHERE username = :username AND collectionId = :idCollection AND cardId = :idCard")
     fun getQuantity(username: String, idCollection: Int, idCard: Int): Int?
