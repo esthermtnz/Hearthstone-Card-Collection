@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("org.jetbrains.kotlin.kapt")
     id("com.google.gms.google-services")
+    id("org.jetbrains.dokka")
 }
 
 android {
