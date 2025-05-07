@@ -14,10 +14,11 @@ import es.uam.eps.dadm.hearthstonecards.model.Pack
 import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 
 /**
- * Definition of the ImageAdapter class
+ * Adapter class for displaying a list of pack images in a RecyclerView
  *
- * @param packs List of packs that will be assigned an image
- * @param viewModel View model where the packs are going to be shown
+ * @param packs List of Pack objects to be displayed
+ * @param viewModel The MainViewModel
+ * @param onPackOpen Function triggered when a pack is opened
  */
 class ImageAdapter(
     private var packs: List<Pack>,
@@ -25,17 +26,32 @@ class ImageAdapter(
     private val onPackOpen: (Int) -> Unit
 ) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
+    /**
+     * ViewHolder that holds the image view for a single pack
+     *
+     * @property imageView The ImageView that displays the pack image
+     * @property lastClickTime Timestamp of the last click
+     */
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
         var lastClickTime: Long = 0
     }
 
+    /**
+     * Inflates the layout for a pack image
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_image, parent, false)
         return ViewHolder(view)
     }
 
+    /**
+     * Binds a Pack object to the view
+     *
+     * @param holder The ViewHolder to bind
+     * @param position The position of the item in the list
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pack = packs[position]
         holder.imageView.setImageResource(pack.picture)
@@ -61,5 +77,10 @@ class ImageAdapter(
         }
     }
 
+    /**
+     * Gets the number of packs in the list
+     *
+     * @return The size of the packs list
+     */
     override fun getItemCount(): Int = packs.size
 }

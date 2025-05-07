@@ -32,7 +32,8 @@ private lateinit var googleSignInClient: GoogleSignInClient
 
 
 /**
- * Definition of the MainActivity class
+ * Activity that displays the main screen
+ *
  */
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -82,6 +83,8 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Shows the popup menu on the main view and allows to interact with it
+     *
+     * @param view The view to set the popup
      */
     private fun showPopupMenu(view: View) {
         val popupMenu = PopupMenu(this, view)
@@ -103,22 +106,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_logout -> {
-                    val sharedPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
-                    sharedPrefs.edit().remove("username").apply()
-
-                    val auth = FirebaseAuth.getInstance()
-                    val currentUser = auth.currentUser
-                    val isGoogleUser = currentUser?.providerData?.any { it.providerId == "google.com" } == true
-
-                    if (isGoogleUser) {
-                        googleSignInClient.signOut().addOnCompleteListener {
-                            auth.signOut()
-                            redirectToLogin()
-                        }
-                    } else {
-                        auth.signOut()
-                        redirectToLogin()
-                    }
+                    logout()
                     true
                 }
                 else -> false
@@ -128,12 +116,42 @@ class MainActivity : AppCompatActivity() {
         popupMenu.show()
     }
 
+    /**
+     * Clears the session and redirects the user to login
+     */
+    private fun logout() {
+        val sharedPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        sharedPrefs.edit().remove("username").apply()
+
+        val auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        val isGoogleUser = currentUser?.providerData?.any { it.providerId == "google.com" } == true
+
+        if (isGoogleUser) {
+            googleSignInClient.signOut().addOnCompleteListener {
+                auth.signOut()
+                redirectToLogin()
+            }
+        } else {
+            auth.signOut()
+            redirectToLogin()
+        }
+    }
+
+    /**
+     * Starts LoginActivity
+     */
     private fun redirectToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
 
+    /**
+     * Opens a pack by randomly selecting 5 cards and storing them in the user's collection
+     *
+     * @param packId ID of the pack being opened
+     */
     suspend fun openPack(packId: Int){
         lifecycleScope.launch{
             withContext(Dispatchers.IO){

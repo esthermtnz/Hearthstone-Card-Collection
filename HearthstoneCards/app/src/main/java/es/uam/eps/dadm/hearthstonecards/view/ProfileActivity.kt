@@ -16,7 +16,7 @@ import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
 /**
- * Definition of the ProfileActivity class
+ * Activity that allows the user to view their profile information and setup the icon
  */
 class ProfileActivity : AppCompatActivity() {
     lateinit var binding: ActivityProfileBinding
@@ -53,11 +53,19 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Callback called when a new icon is selected from the icon fragment
+     *
+     * @param iconName The name of the selected drawable resource
+     */
     fun onIconSelected(iconName: String) {
         viewModel.updateUserIcon(this, iconName)
         Toast.makeText(this, "Icon selected: $iconName", Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * Displays the fragment that lets the user choose a profile icon
+     */
     private fun showFragment() {
         val  fragment = ProfileIconFragment()
         fragment.show(supportFragmentManager, "profile_icon")

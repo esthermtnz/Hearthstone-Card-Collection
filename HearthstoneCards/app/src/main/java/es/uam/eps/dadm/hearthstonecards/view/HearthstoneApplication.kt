@@ -15,6 +15,9 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
+/**
+ * Initializes the global application state
+ */
 class HearthstoneApplication: Application() {
     val applicationScope = CoroutineScope(SupervisorJob())
     val database by lazy {AppDatabase.getInstance(applicationContext)}

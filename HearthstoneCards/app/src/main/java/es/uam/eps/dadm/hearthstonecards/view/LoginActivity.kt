@@ -26,7 +26,7 @@ private lateinit var googleSignInClient: GoogleSignInClient
 private val RC_SIGN_IN = 9001
 
 /**
- * Definition of the LoginActivity class
+ * Activity responsible for user login functionality.
  */
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
@@ -114,6 +114,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Handles the result from the Google Sign-In intent
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -129,6 +132,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Authenticates the user with Firebase using the provided Google ID token
+     *
+     * @param idToken The Google ID token used to authenticate with Firebase
+     */
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)

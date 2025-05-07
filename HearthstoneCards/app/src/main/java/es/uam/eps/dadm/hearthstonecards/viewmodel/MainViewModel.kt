@@ -13,7 +13,7 @@ import es.uam.eps.dadm.hearthstonecards.model.User
 import timber.log.Timber
 
 /**
- * Definition of the class
+ * ViewModel class that stores user and UI shared in the activities
  */
 class MainViewModel() : ViewModel() {
 
@@ -41,10 +41,18 @@ class MainViewModel() : ViewModel() {
         Timber.i("MainViewModel created")
     }
 
+    /**
+     * Sets the current username
+     * @param username The username string
+     */
     fun setUsername(username: String?){
         this.username = username
     }
 
+    /**
+     * Updates the user LiveData and stores user information
+     * @param user The user instance retrieved
+     */
     fun setUser(user: User?){
         this.user = user
         _openTokens.value = user?.openTokens ?:0
@@ -55,22 +63,41 @@ class MainViewModel() : ViewModel() {
         _userIcon.value = user?.icon
     }
 
+    /**
+     * Gets the current user
+     */
     fun getUser(): User?{
         return this.user
     }
 
+    /**
+     * GEts the current username
+     */
     fun getUsername(): String?{
         return this.username
     }
 
+    /**
+     * Sets the list of card packs
+     * @param packs List of Pack objects
+     */
     fun setPacks(packs: List<Pack>){
         this.packs = packs
     }
 
+    /**
+     * Gets the list of card packs
+     */
     fun getPacks(): List<Pack>{
         return this.packs
     }
 
+    /**
+     * Updates the user's profile icon in the ViewModel and the database
+     *
+     * @param context The context used to access the database
+     * @param iconName The name of the icon
+     */
     fun updateUserIcon(context: Context, iconName: String) {
         _userIcon.value = iconName
         user?.let {
@@ -82,6 +109,9 @@ class MainViewModel() : ViewModel() {
         }
     }
 
+    /**
+     * Called when the ViewModel is destroyed
+     */
     override fun onCleared() {
         super.onCleared()
         Timber.i("MainViewModel destroyed")

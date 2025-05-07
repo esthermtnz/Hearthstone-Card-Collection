@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 
 /**
- * Definition of the RegisterActivity class
+ * Manages the registration process for new users
  */
 class RegisterActivity : AppCompatActivity()  {
     lateinit var binding: ActivityRegisterBinding

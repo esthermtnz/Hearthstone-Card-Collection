@@ -10,8 +10,6 @@ import androidx.room.PrimaryKey
  * @param id ID of the pack
  * @param name Name of the pack
  * @param picture ID of the image in res/drawable
- * //@param cards Cards contained in the pack itself (obtained through the method shuffleCards in the Collection data class
- * //@param collection All the cards that are part of the card pool for the pack
  */
 @Entity(tableName="pack_table")
 data class Pack(

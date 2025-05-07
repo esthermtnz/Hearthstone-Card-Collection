@@ -15,8 +15,6 @@ import androidx.room.PrimaryKey
  * @param password Password of the user
  * @param username Username of the user
  * @param openTokens Tokens for opening a pack
- * //@param packs Packs available for the user to open
- * //@param collections Collections the user have from the different collections available
  */
 @Entity(tableName="user_table")
 data class User(

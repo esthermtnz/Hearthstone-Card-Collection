@@ -23,7 +23,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
- * Definition of the ProfileActivity class
+ * Activity that allows the user to view and manage their profile
  */
 class ConfigurationActivity : AppCompatActivity() {
     lateinit var binding: ActivityConfigurationBinding
@@ -167,7 +167,9 @@ class ConfigurationActivity : AppCompatActivity() {
         }
     }
 
-
+    /**
+     * Sends a GET request to retrieve a sample comment from the API
+     */
     private fun getCommentFromApi(){
         lifecycleScope.launch {
             try {
@@ -186,6 +188,9 @@ class ConfigurationActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Sends a POST request to the API with a sample comment
+     */
     private fun postCommentToApi(){
         val newComment = Comment(
             postId = 1,

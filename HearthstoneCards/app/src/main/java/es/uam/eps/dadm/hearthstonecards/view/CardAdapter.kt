@@ -7,14 +7,27 @@ import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.databinding.ItemCardBinding
 import es.uam.eps.dadm.hearthstonecards.model.Card
 
-// Adapter to display the list of cards from a user
+/**
+ * Adapter class for displaying a list of Card items in a RecyclerView
+ *
+ * @param cards List of Card objects to display
+ */
 class CardAdapter(private val cards: List<Card>) :
     RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
+    /**
+     * ViewHolder class for displaying a single card item using ViewBinding
+     *
+     * @param binding The binding object for the item layout
+     */
     class CardViewHolder(private val binding: ItemCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        // Binds the card data to the UI
+        /**
+         * Binds a Card to the layout elements
+         *
+         * @param card The Card object to bind to the UI
+         */
         fun bind(card: Card) {
             val context = binding.root.context
 
@@ -34,7 +47,13 @@ class CardAdapter(private val cards: List<Card>) :
 
     }
 
-    // inflates the layout
+    /**
+     * Inflates the item layout
+     *
+     * @param parent The parent ViewGroup
+     * @param viewType The view type of the new View
+     * @return A new CardViewHolder instance
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val binding = ItemCardBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
@@ -42,11 +61,21 @@ class CardAdapter(private val cards: List<Card>) :
         return CardViewHolder(binding)
     }
 
+    /**
+     * Binds a card from the list to a ViewHolder
+     *
+     * @param holder The ViewHolder to bind
+     * @param position The position of the item in the list
+     */
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         holder.bind(cards[position])
     }
 
-    // Gets the total number of cards in the list
+    /**
+     * Gets the total number of card items
+     *
+     * @return Size of the cards list
+     */
     override fun getItemCount(): Int = cards.size
 
 }

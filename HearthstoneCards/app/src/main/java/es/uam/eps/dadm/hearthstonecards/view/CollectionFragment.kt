@@ -13,6 +13,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * Fragment that displays the list of cards obtained by a user in a collection
+ */
 class CollectionFragment : Fragment() {
     // ViewBinding reference for the fragment layout
     private var _binding: FragmentCollectionBinding? = null
@@ -24,14 +27,18 @@ class CollectionFragment : Fragment() {
     // Username of the current user
     private lateinit var username: String
 
-    // Get arguments passed to the fragment
+    /**
+     * Initializes fragment arguments
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         collectionId = arguments?.getInt(ARG_COLLECTION_ID) ?: 1
         username = arguments?.getString(ARG_USERNAME) ?: ""
     }
 
-    // Inflate the layout and initialize ViewBinding
+    /**
+     * Inflates the layout for this fragment using ViewBinding
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +47,9 @@ class CollectionFragment : Fragment() {
         return binding.root
     }
 
-    // Once the view is created, load the user's obtained cards
+    /**
+     * Loads and displays the cards obtained by the user in the selected collection
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -60,6 +69,9 @@ class CollectionFragment : Fragment() {
         }
     }
 
+    /**
+     * Cleans up the binding reference when the view is destroyed
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -69,7 +81,13 @@ class CollectionFragment : Fragment() {
         private const val ARG_COLLECTION_ID = "collection_id"
         private const val ARG_USERNAME = "username"
 
-        // Creates a new instance of the fragment
+        /**
+         * Creates a new instance of CollectionFragment
+         *
+         * @param collectionId ID of the collection to display
+         * @param username The username of the user
+         * @return A CollectionFragment instance
+         */
         fun newInstance(collectionId: Int, username: String): CollectionFragment {
             val fragment = CollectionFragment()
             fragment.arguments = Bundle().apply {

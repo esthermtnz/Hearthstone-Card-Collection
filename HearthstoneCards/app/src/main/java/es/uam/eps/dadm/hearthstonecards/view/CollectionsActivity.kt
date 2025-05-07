@@ -15,7 +15,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
+/**
+ * Activity that displays all user collections as tabs
+ */
 class CollectionsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCollectionsBinding
@@ -23,6 +25,9 @@ class CollectionsActivity : AppCompatActivity() {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
+    /**
+     * Sets up everything when the activity starts
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_collections)
