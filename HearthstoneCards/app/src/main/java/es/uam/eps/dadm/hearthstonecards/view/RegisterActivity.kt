@@ -82,9 +82,6 @@ class RegisterActivity : AppCompatActivity()  {
                 }
             }
 
-
-
-
         }
 
 

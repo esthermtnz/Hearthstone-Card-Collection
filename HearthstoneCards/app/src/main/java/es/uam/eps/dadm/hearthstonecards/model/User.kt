@@ -30,46 +30,4 @@ data class User(
     var username: String,
     var openTokens: Int,
     var icon: String = "default_icon",
-    //var packs: MutableList<Pack>,
-    //var collections: MutableList<Collection>
-) {
-    /**
-     * Changes the password for an username
-     *
-     * @param newPassword New password for the user
-     */
-    fun changePassword(newPassword: String) {
-        password = newPassword
-    }
-
-    /**
-     * Opens a pack and saves the cards obtained in the appropriate collection, and removes the opened
-     * pack from the available ones
-     *
-     * @param packId ID of the pack that is going to be open
-     */
-    /*
-    fun openPack(packId: Int) {
-        val packToRemove = packs.find { it.id == packId }
-        if (packToRemove != null) {
-            packToRemove.openPack()
-
-            //Add card to obtained and update number of repetitions
-            for (carta in packToRemove.cards) {
-                val cantidadActual = packToRemove.collection.obtained[carta] ?: 0
-                packToRemove.collection.obtained[carta] = cantidadActual + 1
-            }
-
-            println("Cartas obtenidas al abrir el sobre:")
-            for (carta in packToRemove.cards) {
-                println("- ${carta.id} (rareza: ${carta.rarity})")
-            }
-
-            //Delete pack
-            packs.remove(packToRemove)
-        } else {
-            println("Pack con id $packId no encontrado.")
-        }
-    }*/
-
-}
+)

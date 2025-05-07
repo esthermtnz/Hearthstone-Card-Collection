@@ -5,18 +5,15 @@ package es.uam.eps.dadm.hearthstonecards.view
 import android.content.Intent
 import es.uam.eps.dadm.hearthstonecards.databinding.ActivityProfileBinding
 import android.os.Bundle
-import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.database.AppDatabase
 import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * Definition of the ProfileActivity class

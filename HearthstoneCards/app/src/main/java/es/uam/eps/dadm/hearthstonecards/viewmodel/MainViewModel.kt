@@ -4,14 +4,10 @@
 package es.uam.eps.dadm.hearthstonecards.viewmodel
 
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.database.AppDatabase
-import es.uam.eps.dadm.hearthstonecards.model.Card
-import es.uam.eps.dadm.hearthstonecards.model.Collection
 import es.uam.eps.dadm.hearthstonecards.model.Pack
 import es.uam.eps.dadm.hearthstonecards.model.User
 import timber.log.Timber
@@ -20,7 +16,6 @@ import timber.log.Timber
  * Definition of the class
  */
 class MainViewModel() : ViewModel() {
-
 
     private var packs: List<Pack> = emptyList()
 
@@ -86,9 +81,6 @@ class MainViewModel() : ViewModel() {
             }.start()
         }
     }
-
-
-
 
     override fun onCleared() {
         super.onCleared()

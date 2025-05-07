@@ -3,13 +3,10 @@
  */
 package es.uam.eps.dadm.hearthstonecards.view
 import android.content.Intent
-import es.uam.eps.dadm.hearthstonecards.databinding.ActivityProfileBinding
 import android.os.Bundle
-import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import es.uam.eps.dadm.hearthstonecards.R
@@ -24,8 +21,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
-import es.uam.eps.dadm.hearthstonecards.view.ApiService
 
 /**
  * Definition of the ProfileActivity class

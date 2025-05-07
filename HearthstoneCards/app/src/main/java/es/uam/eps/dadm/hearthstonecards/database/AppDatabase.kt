@@ -13,14 +13,6 @@ import es.uam.eps.dadm.hearthstonecards.model.CollectionCardCrossRef
 import es.uam.eps.dadm.hearthstonecards.model.ObtainedCardCrossRef
 
 
-import es.uam.eps.dadm.hearthstonecards.database.CardDAO
-import es.uam.eps.dadm.hearthstonecards.database.CollectionDAO
-import es.uam.eps.dadm.hearthstonecards.database.PackDAO
-import es.uam.eps.dadm.hearthstonecards.database.UserDAO
-import es.uam.eps.dadm.hearthstonecards.database.CollectionCardCrossRefDAO
-import es.uam.eps.dadm.hearthstonecards.database.UserPackCrossRefDAO
-import es.uam.eps.dadm.hearthstonecards.database.ObtainedCardCrossRefDAO
-
 
 @Database(entities=[Card::class, Collection::class, Pack::class, User::class,
         CollectionCardCrossRef::class, UserPackCrossRef::class, ObtainedCardCrossRef::class],

@@ -2,7 +2,6 @@
  * Class created to make the login page functional
  */
 package es.uam.eps.dadm.hearthstonecards.view
-import android.content.Context
 import android.content.Intent
 import es.uam.eps.dadm.hearthstonecards.databinding.ActivityLoginBinding
 import android.os.Bundle
@@ -14,12 +13,6 @@ import es.uam.eps.dadm.hearthstonecards.R
 import timber.log.Timber
 import es.uam.eps.dadm.hearthstonecards.database.AppDatabase
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.FirebaseApp
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.launch
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient

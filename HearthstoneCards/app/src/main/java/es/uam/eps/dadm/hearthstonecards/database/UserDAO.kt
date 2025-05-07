@@ -1,13 +1,9 @@
 package es.uam.eps.dadm.hearthstonecards.database
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import es.uam.eps.dadm.hearthstonecards.model.Card
-import es.uam.eps.dadm.hearthstonecards.model.Collection
-import es.uam.eps.dadm.hearthstonecards.model.Pack
 import es.uam.eps.dadm.hearthstonecards.model.User
 
 @Dao

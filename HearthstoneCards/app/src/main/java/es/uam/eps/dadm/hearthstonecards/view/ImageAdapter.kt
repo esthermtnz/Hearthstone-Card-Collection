@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.model.Pack
-import es.uam.eps.dadm.hearthstonecards.model.User
 import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 
 /**
@@ -63,9 +62,4 @@ class ImageAdapter(
     }
 
     override fun getItemCount(): Int = packs.size
-
-    fun updatePacks(newPacks: List<Pack>) {
-        this.packs = newPacks
-        notifyDataSetChanged()
-    }
 }

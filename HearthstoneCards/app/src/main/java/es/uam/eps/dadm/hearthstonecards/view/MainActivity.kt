@@ -71,15 +71,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
-
-
-
-        /*viewModel.packs.observe(this) { updatedPacks ->
-            adapter.updatePacks(updatedPacks)
-        }*/
-
        //Profile button popup
         binding.btnProfile?.setOnClickListener { view ->
             showPopupMenu(view)
@@ -143,11 +134,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    /*private fun loadPacksFromDB(){
-        val packs = AppDatabase.getInstance(applicationContext).packDao.getPacks()
-        viewModel.setPacks(packs)
-    }*/
-
     suspend fun openPack(packId: Int){
         lifecycleScope.launch{
             withContext(Dispatchers.IO){
@@ -193,11 +179,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "¡Bienvenido! Tienes $tokens sobres para abrir", Toast.LENGTH_SHORT).show()
 
         }
-
-
-        /*val numPacks = viewModel.openTokens.value
-        Toast.makeText(this, "¡Bienvenido! Tienes $numPacks sobres para abrir", Toast.LENGTH_SHORT).show()
-        */
     }
 
 }

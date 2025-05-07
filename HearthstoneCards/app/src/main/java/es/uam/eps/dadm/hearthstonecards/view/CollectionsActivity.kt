@@ -7,11 +7,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.tabs.TabLayoutMediator
-import androidx.viewpager2.widget.ViewPager2
 import es.uam.eps.dadm.hearthstonecards.R
 import es.uam.eps.dadm.hearthstonecards.database.AppDatabase
 import es.uam.eps.dadm.hearthstonecards.databinding.ActivityCollectionsBinding
-import es.uam.eps.dadm.hearthstonecards.view.CollectionPagerAdapter
 import es.uam.eps.dadm.hearthstonecards.viewmodel.MainViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

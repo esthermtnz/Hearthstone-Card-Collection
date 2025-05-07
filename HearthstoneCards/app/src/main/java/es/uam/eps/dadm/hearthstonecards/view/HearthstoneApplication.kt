@@ -13,8 +13,6 @@ import es.uam.eps.dadm.hearthstonecards.model.Pack
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
 class HearthstoneApplication: Application() {
@@ -74,10 +72,6 @@ class HearthstoneApplication: Application() {
 
             database.packDao.addPack(Pack(1, "Priest", R.drawable.priest_pack))
             database.packDao.addPack(Pack(2,"Warrior", R.drawable.warrior_pack))
-
-
-
-
 
         }
 
